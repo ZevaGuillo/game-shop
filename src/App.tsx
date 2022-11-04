@@ -1,15 +1,21 @@
-import { useQuery} from '@tanstack/react-query'
-import {getGames} from './lib/queries/game';
+import { useAppSelector, useAppDispatch } from './hooks/redux';
+import { useEffect } from 'react';
+import { startSanityGames } from './store/slices/gameShop/thunks';
 
 function App() {
+  const dispatch = useAppDispatch();
+  const gamesState = useAppSelector( state => state.gameShop );
 
-  const {data: games} = useQuery({queryKey: ['games'], queryFn: getGames})
-  if(!games) return <></>
+  useEffect(() => {
+    dispatch(startSanityGames())
+  }, [])
+
+  if(gamesState.games.length === 0) return<></>;
 
   return (
     <div className="App">
 
-      {games[0].name}
+      {gamesState.games[0].name}
     </div>
   )
 }
