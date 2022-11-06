@@ -3,7 +3,7 @@ import client from "../sanity";
 
 const query = `*[_type == "game"] {
     _id,
-    name,
+    name,  
   }`;
 
 

@@ -10,7 +10,6 @@ export const startSanityGames = (): ThunkAction<void, RootState, unknown, AnyAct
         const games = await getGames();
 
         dispatch(setGamesState(games))
-        // console.log(getState());
     }
 }
 
