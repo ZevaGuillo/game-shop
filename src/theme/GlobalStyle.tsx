@@ -1,5 +1,7 @@
 import { createGlobalStyle } from "styled-components";
 import { StyleTheme } from "./Theme";
+import { normalize } from 'styled-normalize'
+
 
 // ${ props => props.theme.primary };
 type GlobalProps = {
@@ -12,10 +14,18 @@ type GlobalProps = {
 // } };
 
 export const GlobalStyle = createGlobalStyle`
+     ${normalize}
 
-    body{
-        background-color: #f2f2f2;
-        min-height: 100vh;
+     body {
+        height: 100vh;
+        display: grid;
+        font-family: Roboto;
+        -webkit-text-size-adjust: 100%;
+        -webkit-font-smoothing: antialiased;
+    }
+
+    * {
+        box-sizing: border-box;
     }    
 
 `;
