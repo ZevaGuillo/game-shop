@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { startSanityGames } from './store/slices/gameShop/thunks';
 import AppRouter from './router/AppRouter';
 import { ThemeProvider } from 'styled-components';
+import { Normalize } from 'styled-normalize'
 import { GlobalStyle } from './theme/GlobalStyle';
 import { darkTheme, StyleTheme, theme } from './theme/Theme';
 
@@ -29,9 +30,9 @@ function App() {
   return (
     <ThemeProvider theme={themeState}>
       <>
+        <GlobalStyle />
         <AppRouter/>
         {/* <button onClick={onClickTheme}>darkCOlor</button> */}
-        <GlobalStyle />
       </>
     </ThemeProvider>
 

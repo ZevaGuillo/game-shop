@@ -1,15 +1,23 @@
+import Input from '@/components/Input';
 import styled from 'styled-components';
 
 
 
 const LoginPage = () => {
   return (
-    <StyledLoginPage>LoginPage</StyledLoginPage>
+    <StyledLoginPage>
+      <form className='form'>
+        <Input label='Email' type='email'/>
+        <Input label='Password' type='password'/>
+      </form>
+    </StyledLoginPage>
   )
 }
 
 const StyledLoginPage = styled.main`
-  background-color:aliceblue;
+  .form{
+    width: 50%;
+  }
 `;
 
 export default LoginPage
