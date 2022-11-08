@@ -22,6 +22,13 @@ export const GlobalStyle = createGlobalStyle`
         font-family: Roboto;
         -webkit-text-size-adjust: 100%;
         -webkit-font-smoothing: antialiased;
+        font-family: 'Outfit', sans-serif;
+        font-size: 14px;
+        line-height: 17.64px;
+    }
+
+    h1{
+        font-family: 'Signika', sans-serif;
     }
 
     * {

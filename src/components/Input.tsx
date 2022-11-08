@@ -49,7 +49,7 @@ const StyleInput = styled.div`
             height: 100%;
             background: rgba(0, 0, 0, 0.05);
             z-index: -1;
-            border-radius: .5rem .5rem 0 0;
+            border-radius: 8px 8px 0 0;
             transform: scaleX(0);
             transform-origin: left;
         }
@@ -61,7 +61,7 @@ const StyleInput = styled.div`
         appearance: none;
         width: 100%;
         border: 0;
-        border-radius: .5rem .5rem 0 0;
+        border-radius: 8px 8px 0 0;
         font-family: inherit;
         padding: 16px 12px 2.5px 12px;
         height: 2.5rem;
