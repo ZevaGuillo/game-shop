@@ -18,21 +18,22 @@ export const GlobalStyle = createGlobalStyle`
 
      body {
         height: 100vh;
-        display: grid;
-        font-family: Roboto;
+        overflow-x: hidden;
         -webkit-text-size-adjust: 100%;
         -webkit-font-smoothing: antialiased;
         font-family: 'Outfit', sans-serif;
         font-size: 14px;
         line-height: 17.64px;
+
     }
 
-    /* h1{
-        font-family: 'Signika', sans-serif;
-    } */
+    h1{
+        font-size: 3.75em;
+    }
 
     * {
         box-sizing: border-box;
+        line-height: 0;
     }    
 
 `;

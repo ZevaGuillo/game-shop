@@ -41,31 +41,25 @@ const StyledLayout = styled.main`
       object-fit: cover;
       object-position: top;
     }
-    &::after {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      height: 100%;
-      width: 100%;
-    }
   }
+
   .content {
     width: 100vw;
     height: 100%;
     padding: 2rem;
     display: flex;
     flex-direction: column;
+    justify-content: center;
   }
 
   @media (min-width: 900px) {
     flex-direction: row-reverse;
     .image {
-      height: 100vh;
-      width: 60vw;
+      min-height: 100vh;
+      max-width: 60vw;
     }
     .content {
-      width: 40vw;
+      max-width: 40vw;
     }
   }
 `;

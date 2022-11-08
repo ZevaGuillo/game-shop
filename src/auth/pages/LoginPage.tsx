@@ -18,14 +18,7 @@ const LoginPage = () => {
 const StyledPage = styled.section`
   width: 100%;
   height: 100%;
-  section{
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    .title{
-      padding: 2rem 0;
-    }
-  }
+
 `
 
 
