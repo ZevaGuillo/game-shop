@@ -1,3 +1,4 @@
+import Button from "@/components/Button"
 import Input from "@/components/Input"
 import styled from "styled-components"
 import Layout from "../layout"
@@ -12,7 +13,7 @@ export const RegisterPage = () => {
           <Input type="text" label="UserName"/>
           <Input type="email" label="Email"/>
           <Input type="password" label="Password"/>
-          <button>Sign up</button>
+          <Button>Sign up</Button>
         </form>
       </StyledRegisterPage>
     </Layout>

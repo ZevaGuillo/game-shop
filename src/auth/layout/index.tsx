@@ -50,6 +50,12 @@ const StyledLayout = styled.main`
     display: flex;
     flex-direction: column;
     justify-content: center;
+
+    .navigation{
+      display: flex;
+      gap: 1rem;
+    }
+
   }
 
   @media (min-width: 900px) {
