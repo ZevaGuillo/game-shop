@@ -1,30 +1,33 @@
-import Input from '@/components/Input';
-import styled from 'styled-components';
-import LogoSVG from '@/components/LogoSVG';
-
-
+import Input from "@/components/Input";
+import styled from "styled-components";
+import LogoSVG from "@/components/LogoSVG";
+import { Link } from "react-router-dom";
+import Layout from "../layout";
+import LoginForm from "../components/LoginForm";
 
 const LoginPage = () => {
   return (
-    <StyledLoginPage>
-      <div>
-        <LogoSVG/>
-      </div>
-      <form className='form'>
-        <Input label='Email' type='email'/>
-        <Input label='Password' type='password'/>
-      </form>
-    </StyledLoginPage>
-  )
-}
+    <Layout>
+      <StyledPage>
+        <LoginForm/>
+      </StyledPage>
+    </Layout>
+  );
+};
 
-const StyledLoginPage = styled.main`
-  .form{
-    width: 50%;
+const StyledPage = styled.section`
+  width: 100%;
+  height: 100%;
+  section{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    .title{
+      padding: 2rem 0;
+    }
   }
-  div{
-    width: 50%;
-  }
-`;
+`
 
-export default LoginPage
+
+
+export default LoginPage;

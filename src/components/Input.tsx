@@ -19,7 +19,6 @@ const Input = ({label, type}: InputProps) => {
 
 const StyleInput = styled.div`
   position: relative;
-  margin: 1rem;
   width: 100%;
   min-width: 280px;
   height: 2.5rem;

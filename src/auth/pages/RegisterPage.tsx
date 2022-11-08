@@ -1,7 +1,10 @@
+import Layout from "../layout"
 
 
 export const RegisterPage = () => {
   return (
-    <div>RegisterPage</div>
+    <Layout>
+      <h1>Register</h1>
+    </Layout>
   )
 }

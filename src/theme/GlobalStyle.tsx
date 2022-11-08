@@ -27,9 +27,9 @@ export const GlobalStyle = createGlobalStyle`
         line-height: 17.64px;
     }
 
-    h1{
+    /* h1{
         font-family: 'Signika', sans-serif;
-    }
+    } */
 
     * {
         box-sizing: border-box;
