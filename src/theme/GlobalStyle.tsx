@@ -15,7 +15,12 @@ type GlobalProps = {
 
 export const GlobalStyle = createGlobalStyle`
      ${normalize}
-
+     
+     * {
+         box-sizing: border-box;
+         line-height: 0;
+     }  
+       
      body {
         height: 100vh;
         overflow-x: hidden;
@@ -31,9 +36,5 @@ export const GlobalStyle = createGlobalStyle`
         font-size: 3.75em;
     }
 
-    * {
-        box-sizing: border-box;
-        line-height: 0;
-    }    
 
 `;
