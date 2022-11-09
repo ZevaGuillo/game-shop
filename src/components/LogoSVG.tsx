@@ -4,6 +4,7 @@ import styled from "styled-components";
 type LogoSVGProps = {
   color?: string;
   stroke?: string;
+  className?:string
 };
 
 const LogoSVG = (logoConfig: LogoSVGProps) => {

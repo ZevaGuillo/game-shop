@@ -17,8 +17,8 @@ export const GlobalStyle = createGlobalStyle`
      ${normalize}
      
      * {
-         box-sizing: border-box;
-         line-height: 0;
+        box-sizing: border-box;
+        line-height: normal;
      }  
        
      body {
@@ -36,5 +36,18 @@ export const GlobalStyle = createGlobalStyle`
         font-size: 3.75em;
     }
 
+    .container{
+      padding-left:.7rem;
+      padding-right: .7rem;
+      @media (min-width: 900px){
+        padding-left:7%;
+        padding-right: 7%;
+      }
+    }
+
+    .icon{
+      font-size: 1.3em;
+      line-height: 0;
+    }
 
 `;

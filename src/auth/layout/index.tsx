@@ -34,6 +34,7 @@ const StyledLayout = styled.main`
   align-items: center;
   height: 100vh;
   background-color: transparent;
+  overflow-y: hidden;
   .image {
     position: relative;
     width: 100vw;
