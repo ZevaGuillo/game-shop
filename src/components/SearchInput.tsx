@@ -29,9 +29,9 @@ const StyledSearchInput = styled.div`
     padding: 0 1rem;
     color: #404040;
     font-size: 15px;
-    border: 1px solid #5e4dcd;
+    border: none;
     border-radius: 6px 0 0 6px;
-    background-color: #fff;
+    background-color: ${(props) => props.theme.colors.variant};
   }
 
   .button--submit {
@@ -40,16 +40,21 @@ const StyledSearchInput = styled.div`
     padding: 0.5em 1em;
     border: none;
     border-radius: 0 6px 6px 0;
-    background-color: #5e4dcd;
+    background-color: ${(props) => props.theme.colors.inputColor};
     color: #fff;
     font-size: 15px;
     cursor: pointer;
-    transition: background-color 0.3s ease-in-out;
+    transition: all 0.25s ease;
     
-    .icon-button{
+    .icon.icon-button{
         margin-left: .2rem;;
         font-size: 1rem;
         transform: translateY(16%);
+        color: #fff;
+    }
+
+    span{
+      color: #fff;
     }
 
   }
