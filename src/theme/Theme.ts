@@ -1,13 +1,19 @@
 
 const colors = {
-  primary: '#2179ee',
+  primary: 'red',
   
   //theme
   bgColor: '#FFFFFF',
   negative: '#1E1E1E',
   text: 'rgba(30,30,30,0.5)',
   variant: 'rgba(30,30,30,0.05)',
+  variant2: 'rgba(30,30,30,0.35)',
+  variant3: 'rgba(30,30,30,0.5)',
   inputColor: '#1E1E1E',
+  authPattern1: '#dbdde0',
+  authPattern2: '#b9bcc2',
+  authPattern3: '#979ca4',
+  authPattern4: '#777d88',
 };
 
 const secondaryColors = {
@@ -41,7 +47,13 @@ const darkTheme: StyleTheme = {
     negative: '#ffffff',
     text: 'rgba(255,255,255,0.05)',
     variant: 'rgba(255,255,255,0.05)',
+    variant2: 'rgba(255,255,255,0.25)',
+    variant3: 'rgba(255,255,255,0.5)',
     inputColor: '#3D3D3D',
+    authPattern1: '#262626',
+    authPattern2: '#2f2f2f',
+    authPattern3: '#373737',
+    authPattern4: '#404040',
   }
 }
 
