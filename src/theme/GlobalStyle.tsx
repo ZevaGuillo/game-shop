@@ -53,4 +53,27 @@ export const GlobalStyle = createGlobalStyle`
       }
     }
 
+    .button{
+      background-color: ${(props: GlobalProps) => props.theme.colors.primary};
+      span{
+        color: #fff;
+      }
+    }
+
+    .btn-google{
+      background-color: ${(props: GlobalProps) => props.theme.colors.googleColor};
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap:.7rem;
+      .icon, span{
+        color: #fff;
+      }
+      span{
+      }
+      .icon{
+        line-height: 0;
+      }
+    }
+
 `;

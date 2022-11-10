@@ -1,6 +1,7 @@
 
 const colors = {
   primary: 'red',
+  googleColor: '#4285F4',
   
   //theme
   bgColor: '#FFFFFF',
