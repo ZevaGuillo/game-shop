@@ -34,7 +34,7 @@ const StyleInput = styled.div`
       transform-origin: 0 0;
       transform: translate3d(0, 0, 0);
       transform: translateY(-50%);
-      font-size: 16px;
+      font-size: 18px;
       color: ${(props) => props.theme.colors.variant2};
       font-weight: 500;
       transition: all 0.2s ease;
@@ -68,7 +68,7 @@ const StyleInput = styled.div`
     font-weight: 400;
     background: ${(props) => props.theme.colors.variant};
     box-shadow: inset 0 -1px 0 ${(props) => props.theme.colors.variant};
-    color: ${(props) => props.theme.colors.variant3};
+    color: ${(props) => props.theme.colors.negative};
     transition: all 0.15s ease;
   }
   .inp input:hover {
@@ -77,24 +77,24 @@ const StyleInput = styled.div`
   }
   .inp input:not(:-moz-placeholder-shown) + .label {
     color: ${(props) => props.theme.colors.negative};
-    transform: translate3d(0, -15px, 0) scale(0.75);
+    transform: translate3d(0, -20px, 0) scale(0.75);
   }
   .inp input:not(:-ms-input-placeholder) + .label {
     color: ${(props) => props.theme.colors.negative};
-    transform: translate3d(0, -15px, 0) scale(0.75);
+    transform: translate3d(0, -20px, 0) scale(0.75);
   }
   .inp input:not(:placeholder-shown) + .label {
-    color: ${(props) => props.theme.colors.negative};
-    transform: translate3d(0, -15px, 0) scale(0.75);
+    color: ${(props) => props.theme.colors.variant3};
+    transform: translate3d(0, -20px, 0) scale(0.75);
   }
   .inp input:focus {
-    background: rgba(0, 0, 0, 0.05);
+    background: ${(props) => props.theme.colors.variant1};
     outline: none;
     box-shadow: inset 0 -2px 0 ${(props) => props.theme.colors.primary};
   }
   .inp input:focus + .label {
     color: ${(props) => props.theme.colors.primary};
-    transform: translate3d(0, -15px, 0) scale(0.75);
+    transform: translate3d(0, -20px, 0) scale(0.75);
   }
   .inp input:focus + .label + .focus-bg {
     transform: scaleX(1);
