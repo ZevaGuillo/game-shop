@@ -1,7 +1,9 @@
 import LogoSVG from "@/components/LogoSVG";
-import { FiSearch, FiShoppingCart, FiUser } from "react-icons/fi";
+import { FiSearch, FiShoppingCart, FiUser, FiHeart } from "react-icons/fi";
 import { GiHamburgerMenu } from "react-icons/gi";
 import styled from "styled-components";
+import Search from "./Search";
+import SearchInput from "./Search";
 
 type NavBarProps = {
   toggleDrawer: () => void;
@@ -10,19 +12,22 @@ type NavBarProps = {
 const NavBar = ({ toggleDrawer }: NavBarProps) => {
   return (
     <StyledNavBar className="container">
-      <div onClick={toggleDrawer}>
+      <div onClick={toggleDrawer} className="drawer">
         <GiHamburgerMenu className="icon" />
       </div>
       <div className="logo-header">
         <LogoSVG className="logo-ico" />
-        <span>GameLand</span>
+        <span>Gameland</span>
       </div>
-      <div className="options">
-        <FiSearch className="icon" />
 
-        <FiShoppingCart className="icon" />
+      <div className="options">
+        <Search/>
 
         <FiUser className="icon" />
+
+        <FiHeart className="icon favorite" />
+
+        <FiShoppingCart className="icon" />
       </div>
     </StyledNavBar>
   );
@@ -31,6 +36,8 @@ const NavBar = ({ toggleDrawer }: NavBarProps) => {
 const StyledNavBar = styled.nav.attrs((props) => ({
   className: props.className,
 }))`
+
+  position: relative;
   background-color: aliceblue;
   height: 3rem;
   max-height: 3rem;
@@ -53,6 +60,7 @@ const StyledNavBar = styled.nav.attrs((props) => ({
     span {
       font-size: 1.2em;
       line-height: 0;
+      user-select: none;
     }
     &:hover {
       cursor: pointer;
@@ -61,7 +69,11 @@ const StyledNavBar = styled.nav.attrs((props) => ({
 
   .options {
     display: flex;
-    gap: 0.4rem;
+    align-items: center;
+    gap: 0.5rem;
+    .favorite {
+      display: none;
+    }
   }
 
   @media (min-width: 900px) {
@@ -75,6 +87,15 @@ const StyledNavBar = styled.nav.attrs((props) => ({
       }
       span {
         font-size: 1.5em;
+      }
+    }
+    .drawer {
+      display: none;
+    }
+    .options {
+      gap: 2rem;
+      .favorite {
+        display: inline-block;
       }
     }
   }

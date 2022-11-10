@@ -48,6 +48,9 @@ export const GlobalStyle = createGlobalStyle`
     .icon{
       font-size: 1.3em;
       line-height: 0;
+      @media (min-width: 900px){
+        font-size: 1.5em;
+      }
     }
 
 `;
