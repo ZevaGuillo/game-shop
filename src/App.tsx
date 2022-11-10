@@ -6,10 +6,11 @@ import { ThemeProvider } from 'styled-components';
 import { Normalize } from 'styled-normalize'
 import { GlobalStyle } from './theme/GlobalStyle';
 import { darkTheme, StyleTheme, theme } from './theme/Theme';
+import { setDarkMode } from './store/slices/gameShop/gameShopSlice';
 
 function App() {
-  // const dispatch = useAppDispatch();
-  // const gamesState = useAppSelector( state => state.gameShop );
+  const dispatch = useAppDispatch();
+  const {darkMode} = useAppSelector( state => state.gameShop );
 
   // useEffect(() => {
   //   dispatch(startSanityGames())
@@ -17,22 +18,15 @@ function App() {
 
   // if(gamesState.games.length === 0) return<></>;
 
-  const [themeState, setThemeState] = useState<StyleTheme>(theme)
+  // const [themeState, setThemeState] = useState<StyleTheme>(theme)
   
-  const onClickTheme = ()=>{
-    if(themeState !== theme){
-      setThemeState(theme)
-      return;
-    }
-    setThemeState(darkTheme)
-  }
 
   return (
-    <ThemeProvider theme={themeState}>
+    <ThemeProvider theme={darkMode? darkTheme: theme}>
       <>
         <GlobalStyle />
         <AppRouter/>
-        {/* <button onClick={onClickTheme}>darkCOlor</button> */}
+        <button onClick={()=> dispatch(setDarkMode())}>darkCOlor</button>
       </>
     </ThemeProvider>
 

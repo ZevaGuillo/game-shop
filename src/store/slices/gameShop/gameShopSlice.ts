@@ -4,11 +4,13 @@ import type { RootState } from '../../store'
 import { IGame } from '../../../types/gameType';
 
 interface GamesState {
-  games: IGame[]
+  games: IGame[],
+  darkMode: boolean,
 }
 
 const initialState: GamesState = {
   games: [],
+  darkMode: false,
 }
 
 export const gameShopSlice = createSlice({
@@ -18,9 +20,12 @@ export const gameShopSlice = createSlice({
     setGamesState: (state, action: PayloadAction<IGame[]>) => {
       state.games = action.payload;
     },
+    setDarkMode: (state)=>{
+      state.darkMode = !state.darkMode
+    }
   },
 })
 
-export const { setGamesState } = gameShopSlice.actions
+export const { setGamesState, setDarkMode } = gameShopSlice.actions
 
 export default gameShopSlice.reducer
