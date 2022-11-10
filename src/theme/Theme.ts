@@ -1,7 +1,8 @@
 // JS reimplementation of Style Closet scales for use in styled-components
 const colors = {
   primary: '#2179ee',
-  negative: '#000000'
+  bgColor: '#FFFFFF',
+  negative: '#1E1E1E'
 };
 
 const secondaryColors = {
@@ -29,7 +30,8 @@ const theme: StyleTheme = {
 const darkTheme: StyleTheme = {
   ...theme,
   colors: {
-    primary: '#000000',
+    ...theme.colors,
+    bgColor: '#1E1E1E',
     negative: '#ffffff'
   }
 }
