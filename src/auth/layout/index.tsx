@@ -35,6 +35,7 @@ const StyledLayout = styled.main`
   height: 100vh;
   background-color: transparent;
   overflow-y: hidden;
+  transition: all 0.25s ease;
   .image {
     position: relative;
     width: 100vw;
