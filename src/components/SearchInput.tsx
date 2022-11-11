@@ -1,4 +1,3 @@
-import React from "react";
 import { FiSearch } from "react-icons/fi";
 import styled from "styled-components";
 
@@ -8,7 +7,7 @@ const SearchInput = () => {
       <input
         type="text"
         className="input"
-        placeholder="Search Product Here"
+        placeholder="Search Game Here"
         autoComplete="off"
       />
       <button className="button--submit">
@@ -60,7 +59,7 @@ const StyledSearchInput = styled.div`
   }
 
   .button--submit:hover {
-    background-color: #5e5dcd;
+    background-color: ${(props) => props.theme.colors.btnHover};
   }
 
   .input:focus,

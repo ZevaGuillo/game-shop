@@ -2,7 +2,7 @@
 const colors = {
   primary: 'red',
   googleColor: '#4285F4',
-  
+
   //theme
   bgColor: '#FFFFFF',
   negative: '#1E1E1E',
@@ -16,6 +16,7 @@ const colors = {
   authPattern2: '#b9bcc2',
   authPattern3: '#979ca4',
   authPattern4: '#777d88',
+  btnHover: 'rgba(30,30,30,0.8)',
 };
 
 const secondaryColors = {
@@ -57,6 +58,7 @@ const darkTheme: StyleTheme = {
     authPattern2: '#2f2f2f',
     authPattern3: '#373737',
     authPattern4: '#404040',
+    btnHover: 'rgba(255,255,255,0.2)',
   }
 }
 

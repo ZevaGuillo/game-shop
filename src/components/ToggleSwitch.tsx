@@ -18,8 +18,8 @@ const StyledToggleSwitch = styled.label`
   font-size: 14px;
   position: relative;
   display: inline-block;
-  width: 3em;
-  height: 2em;
+  width: 2.9em;
+  height: 1.7em;
 
   input {
     opacity: 0;
@@ -43,8 +43,8 @@ const StyledToggleSwitch = styled.label`
   .slider:before {
     position: absolute;
     content: "";
-    height: 1.4em;
-    width: 1.4em;
+    height: 1.1em;
+    width: 1.1em;
     border-radius: 20px;
     left: 0.3em;
     bottom: 0.3em;
@@ -58,7 +58,7 @@ const StyledToggleSwitch = styled.label`
 
 
   input:checked + .slider:before {
-    transform: translateX(1em);
+    transform: translateX(1.1em);
   }
 `;
 
