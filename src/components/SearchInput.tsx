@@ -27,7 +27,7 @@ const StyledSearchInput = styled.div`
   .input {
     min-height: 37px;
     padding: 0 1rem;
-    color: #404040;
+    color: ${(props) => props.theme.colors.text};
     font-size: 15px;
     border: none;
     border-radius: 6px 0 0 6px;

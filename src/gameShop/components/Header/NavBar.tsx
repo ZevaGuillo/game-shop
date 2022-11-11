@@ -1,4 +1,5 @@
 import LogoSVG from "@/components/LogoSVG";
+import ToggleSwitch from "@/components/ToggleSwitch";
 import { FiSearch, FiShoppingCart, FiUser, FiHeart } from "react-icons/fi";
 import { GiHamburgerMenu } from "react-icons/gi";
 import styled from "styled-components";
@@ -22,6 +23,8 @@ const NavBar = ({ toggleDrawer }: NavBarProps) => {
 
       <div className="options">
         <Search />
+
+        <ToggleSwitch/>
 
         <FiHeart className="icon favorite" />
 

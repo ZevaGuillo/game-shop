@@ -6,7 +6,7 @@ const colors = {
   //theme
   bgColor: '#FFFFFF',
   negative: '#1E1E1E',
-  text: 'rgba(30,30,30,0.5)',
+  text: 'rgba(30,30,30,0.7)',
   variant: 'rgba(30,30,30,0.05)',
   variant1: 'rgba(30,30,30,0.07)',
   variant2: 'rgba(30,30,30,0.35)',
@@ -47,7 +47,7 @@ const darkTheme: StyleTheme = {
 
     bgColor: '#1E1E1E',
     negative: '#ffffff',
-    text: 'rgba(255,255,255,0.05)',
+    text: 'rgba(255,255,255,0.7)',
     variant: 'rgba(255,255,255,0.05)',
     variant1: 'rgba(255,255,255,0.07)',
     variant2: 'rgba(255,255,255,0.25)',

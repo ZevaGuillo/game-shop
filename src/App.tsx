@@ -18,15 +18,11 @@ function App() {
 
   // if(gamesState.games.length === 0) return<></>;
 
-  // const [themeState, setThemeState] = useState<StyleTheme>(theme)
-  
-
   return (
     <ThemeProvider theme={darkMode? darkTheme: theme}>
       <>
         <GlobalStyle />
         <AppRouter/>
-        <button onClick={()=> dispatch(setDarkMode())}>darkCOlor</button>
       </>
     </ThemeProvider>
 
