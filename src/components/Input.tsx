@@ -34,8 +34,8 @@ const StyleInput = styled.div`
       transform-origin: 0 0;
       transform: translate3d(0, 0, 0);
       transform: translateY(-50%);
-      font-size: 16px;
-      color: rgba(0, 0, 0, 0.5);
+      font-size: 18px;
+      color: ${(props) => props.theme.colors.variant2};
       font-weight: 500;
       transition: all 0.2s ease;
       pointer-events: none;
@@ -46,7 +46,7 @@ const StyleInput = styled.div`
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0, 0, 0, 0.05);
+      background: ${(props) => props.theme.colors.variant};
       z-index: -1;
       border-radius: 8px 8px 0 0;
       transform: scaleX(0);
@@ -66,35 +66,35 @@ const StyleInput = styled.div`
     height: 3rem;
     font-size: 16px;
     font-weight: 400;
-    background: rgba(0, 0, 0, 0.02);
-    box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.3);
-    color: #000;
+    background: ${(props) => props.theme.colors.variant};
+    box-shadow: inset 0 -1px 0 ${(props) => props.theme.colors.variant};
+    color: ${(props) => props.theme.colors.negative};
     transition: all 0.15s ease;
   }
   .inp input:hover {
-    background: rgba(0, 0, 0, 0.04);
-    box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.5);
+    background: ${(props) => props.theme.colors.variant};
+    box-shadow: inset 0 -1px 0 ${(props) => props.theme.colors.variant};
   }
   .inp input:not(:-moz-placeholder-shown) + .label {
-    color: rgba(0, 0, 0, 0.5);
-    transform: translate3d(0, -15px, 0) scale(0.75);
+    color: ${(props) => props.theme.colors.negative};
+    transform: translate3d(0, -20px, 0) scale(0.75);
   }
   .inp input:not(:-ms-input-placeholder) + .label {
-    color: rgba(0, 0, 0, 0.5);
-    transform: translate3d(0, -15px, 0) scale(0.75);
+    color: ${(props) => props.theme.colors.negative};
+    transform: translate3d(0, -20px, 0) scale(0.75);
   }
   .inp input:not(:placeholder-shown) + .label {
-    color: rgba(0, 0, 0, 0.5);
-    transform: translate3d(0, -15px, 0) scale(0.75);
+    color: ${(props) => props.theme.colors.variant3};
+    transform: translate3d(0, -20px, 0) scale(0.75);
   }
   .inp input:focus {
-    background: rgba(0, 0, 0, 0.05);
+    background: ${(props) => props.theme.colors.variant1};
     outline: none;
-    box-shadow: inset 0 -2px 0 #0077ff;
+    box-shadow: inset 0 -2px 0 ${(props) => props.theme.colors.primary};
   }
   .inp input:focus + .label {
-    color: #0077ff;
-    transform: translate3d(0, -15px, 0) scale(0.75);
+    color: ${(props) => props.theme.colors.primary};
+    transform: translate3d(0, -20px, 0) scale(0.75);
   }
   .inp input:focus + .label + .focus-bg {
     transform: scaleX(1);

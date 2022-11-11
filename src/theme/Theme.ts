@@ -1,7 +1,22 @@
-// JS reimplementation of Style Closet scales for use in styled-components
+
 const colors = {
-  primary: '#2179ee',
-  negative: '#000000'
+  primary: 'red',
+  googleColor: '#4285F4',
+
+  //theme
+  bgColor: '#FFFFFF',
+  negative: '#1E1E1E',
+  text: 'rgba(30,30,30,0.7)',
+  variant: 'rgba(30,30,30,0.05)',
+  variant1: 'rgba(30,30,30,0.07)',
+  variant2: 'rgba(30,30,30,0.35)',
+  variant3: 'rgba(30,30,30,0.5)',
+  inputColor: '#1E1E1E',
+  authPattern1: '#dbdde0',
+  authPattern2: '#b9bcc2',
+  authPattern3: '#979ca4',
+  authPattern4: '#777d88',
+  btnHover: 'rgba(30,30,30,0.8)',
 };
 
 const secondaryColors = {
@@ -29,8 +44,21 @@ const theme: StyleTheme = {
 const darkTheme: StyleTheme = {
   ...theme,
   colors: {
-    primary: '#000000',
-    negative: '#ffffff'
+    ...theme.colors,
+
+    bgColor: '#1E1E1E',
+    negative: '#ffffff',
+    text: 'rgba(255,255,255,0.7)',
+    variant: 'rgba(255,255,255,0.05)',
+    variant1: 'rgba(255,255,255,0.07)',
+    variant2: 'rgba(255,255,255,0.25)',
+    variant3: 'rgba(255,255,255,0.5)',
+    inputColor: '#3D3D3D',
+    authPattern1: '#262626',
+    authPattern2: '#2f2f2f',
+    authPattern3: '#373737',
+    authPattern4: '#404040',
+    btnHover: 'rgba(255,255,255,0.2)',
   }
 }
 

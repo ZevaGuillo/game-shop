@@ -1,8 +1,7 @@
-import Button from "@/components/Button"
-import Input from "@/components/Input"
-import styled from "styled-components"
-import Layout from "../layout"
-
+import Button from "@/components/Button";
+import Input from "@/components/Input";
+import styled from "styled-components";
+import Layout from "../layout";
 
 export const RegisterPage = () => {
   return (
@@ -10,15 +9,17 @@ export const RegisterPage = () => {
       <StyledRegisterPage>
         <h1>Sign Up</h1>
         <form className="form">
-          <Input type="text" label="UserName"/>
-          <Input type="email" label="Email"/>
-          <Input type="password" label="Password"/>
-          <Button>Sign up</Button>
+          <Input type="text" label="UserName" />
+          <Input type="email" label="Email" />
+          <Input type="password" label="Password" />
+          <Button>
+            <span>Sign up</span>
+          </Button>
         </form>
       </StyledRegisterPage>
     </Layout>
-  )
-}
+  );
+};
 
 const StyledRegisterPage = styled.section`
   width: 100%;
@@ -28,14 +29,13 @@ const StyledRegisterPage = styled.section`
   place-content: center;
   gap: 1rem;
 
-  .form{
+  .form {
     width: 100%;
     display: flex;
     flex-direction: column;
     gap: 2rem;
-    button{
-        width: fit-content;
+    button {
+      width: fit-content;
     }
   }
-
-`
+`;

@@ -1,4 +1,5 @@
 import LogoSVG from "@/components/LogoSVG";
+import ToggleSwitch from "@/components/ToggleSwitch";
 import { FiSearch, FiShoppingCart, FiUser, FiHeart } from "react-icons/fi";
 import { GiHamburgerMenu } from "react-icons/gi";
 import styled from "styled-components";
@@ -21,13 +22,15 @@ const NavBar = ({ toggleDrawer }: NavBarProps) => {
       </div>
 
       <div className="options">
-        <Search/>
+        <Search />
 
-        <FiUser className="icon" />
+        <ToggleSwitch/>
 
         <FiHeart className="icon favorite" />
 
         <FiShoppingCart className="icon" />
+
+        <FiUser className="icon" />
       </div>
     </StyledNavBar>
   );
@@ -36,9 +39,8 @@ const NavBar = ({ toggleDrawer }: NavBarProps) => {
 const StyledNavBar = styled.nav.attrs((props) => ({
   className: props.className,
 }))`
-
   position: relative;
-  background-color: aliceblue;
+  background-color: ${(props) => props.theme.colors.bgColor};
   height: 3rem;
   max-height: 3rem;
   padding-top: 0.7rem;
@@ -47,6 +49,8 @@ const StyledNavBar = styled.nav.attrs((props) => ({
   justify-content: space-between;
   align-items: center;
   gap: 1rem;
+  border-bottom: 1px solid ${(props) => props.theme.colors.variant};
+  transition: all 0.25s ease;
 
   .logo-header {
     height: 100%;
@@ -61,6 +65,7 @@ const StyledNavBar = styled.nav.attrs((props) => ({
       font-size: 1.2em;
       line-height: 0;
       user-select: none;
+      color: ${(props) => props.theme.colors.negative};
     }
     &:hover {
       cursor: pointer;

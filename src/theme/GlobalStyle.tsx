@@ -1,17 +1,11 @@
 import { createGlobalStyle } from "styled-components";
 import { StyleTheme } from "./Theme";
-import { normalize } from 'styled-normalize'
-
+import { normalize } from "styled-normalize";
 
 // ${ props => props.theme.primary };
 type GlobalProps = {
-  theme: StyleTheme  
-} 
-
-// ${ (props: GlobalProps) => {
-//     console.log(props.theme.colors.primary);
-//     return props.theme.colors.primary
-// } };
+  theme: StyleTheme;
+};
 
 export const GlobalStyle = createGlobalStyle`
      ${normalize}
@@ -22,6 +16,7 @@ export const GlobalStyle = createGlobalStyle`
      }  
        
      body {
+      background-color: ${(props: GlobalProps) => props.theme.colors.bgColor};
         height: 100vh;
         overflow-x: hidden;
         -webkit-text-size-adjust: 100%;
@@ -33,7 +28,11 @@ export const GlobalStyle = createGlobalStyle`
     }
 
     h1{
-        font-size: 3.75em;
+      font-size: 3.75em;
+    }
+
+    h1,h2,h3,h4,p,span{
+      color: ${(props: GlobalProps) => props.theme.colors.negative};
     }
 
     .container{
@@ -48,8 +47,32 @@ export const GlobalStyle = createGlobalStyle`
     .icon{
       font-size: 1.3em;
       line-height: 0;
+      color: ${(props: GlobalProps) => props.theme.colors.negative};
       @media (min-width: 900px){
         font-size: 1.5em;
+      }
+    }
+
+    .button{
+      background-color: ${(props: GlobalProps) => props.theme.colors.primary};
+      span{
+        color: #fff;
+      }
+    }
+
+    .btn-google{
+      background-color: ${(props: GlobalProps) => props.theme.colors.googleColor};
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap:.7rem;
+      .icon, span{
+        color: #fff;
+      }
+      span{
+      }
+      .icon{
+        line-height: 0;
       }
     }
 

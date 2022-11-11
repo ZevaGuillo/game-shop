@@ -32,24 +32,24 @@ const AuthSVGPattern = () => {
 
 const StyledSVG = styled.svg`
   .cls-5 {
-    fill: #777d88;
+    fill: ${(props) => props.theme.colors.authPattern4};
     opacity: 0.30;
     filter: blur(30px);
   }
   .cls-6 {
-    fill: #979ca4;
+    fill: ${(props) => props.theme.colors.authPattern3};
     opacity: 0.80;
   }
   .cls-7 {
-    fill: #b9bcc2;
+    fill: ${(props) => props.theme.colors.authPattern2};
     opacity: 0.90;
   }
   .cls-8 {
-    fill: #dbdde0;
+    fill: ${(props) => props.theme.colors.authPattern1};
     opacity: 0.95;
   }
   .cls-9 {
-    fill: #fff;
+    fill: ${(props) => props.theme.colors.bgColor};
   }
 `;
 
