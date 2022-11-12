@@ -1,9 +1,21 @@
+import styled from 'styled-components';
+import Slidershow from '../components/Slidershow';
 
 
 const GameShopPage = () => {
   return (
-    <div>GameShopPage</div>
+    <StyledGameShop className='container'>
+      <section>
+        <Slidershow/>
+      </section>
+    </StyledGameShop>
   )
 }
+
+const StyledGameShop = styled.main.attrs((props) => ({
+  className: props.className,
+}))`
+
+`
 
 export default GameShopPage
