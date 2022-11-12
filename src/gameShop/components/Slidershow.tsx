@@ -1,28 +1,24 @@
 import styled from "styled-components";
-import { useState } from "react";
-import { AnimatePresence, motion, AnimationProps } from "framer-motion";
+import { useState, useEffect } from 'react';
+import { AnimatePresence, motion } from "framer-motion";
+import { useSlider } from "../hooks/useSlider";
+import { useAppDispatch, useAppSelector } from '../../hooks/redux';
+import Image from "@/components/Image";
+import { startSanityFeatured } from "@/store/slices/gameShop/thunks";
 
 const Slidershow = () => {
-  const [index, setIndex] = useState(0);
-  const [direction, setDirection] = useState(0);
+  const dispatch = useAppDispatch();
+  const {featured} = useAppSelector((state) => state.gameShop)
 
-  const prevStep = () => {
-    setDirection(1);
-    if (index === 0) {
-      setIndex(images.length - 1);
-      return;
-    }
-    setIndex(index - 1);
-  };
+  const { index, direction, prevStep, nextStep } = useSlider(featured);
 
-  const nextStep = () => {
-    setDirection(-1);
-    if (index === images.length - 1) {
-      setIndex(0);
-      return;
-    }
-    setIndex(index + 1);
-  };
+
+  useEffect(() => {
+    dispatch(startSanityFeatured())
+  }, [])
+
+  if(featured.length === 0) return<></>;
+
 
   return (
     <StyledSlider>
@@ -33,13 +29,13 @@ const Slidershow = () => {
             animate="animate"
             initial="initial"
             exit="exit"
-            src={images[index]}
+            src={featured[index].imageUrl}
             alt="slides"
             className="slides"
-            key={images[index]}
+            key={featured[index].imageUrl}
             custom={direction}
           />
-          <img src={images[index]} className="card" />
+          {/* <img src={discounts[index].games[0].imageUrl} className="card" /> */}
         </AnimatePresence>
         <button className="prevButton" onClick={prevStep}>
           {"<"}
@@ -73,10 +69,9 @@ const variants = {
 
 const StyledSlider = styled.div`
   display: flex;
-  padding-top: 5rem;
+  padding-top: 2rem;
 
   .slideshow {
-    margin: auto;
     width: 100%;
     aspect-ratio: calc(16 / 9);
     position: relative;
@@ -134,8 +129,7 @@ const StyledSlider = styled.div`
   }
 
   @media (min-width: 900px) {
-    padding: 60px;
-    padding-top: 5rem;
+    padding: 2rem 60px;
 
     .slideshow {
       aspect-ratio: calc(21 / 9);

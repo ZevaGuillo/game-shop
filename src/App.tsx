@@ -10,16 +10,16 @@ import { setDarkMode } from './store/slices/gameShop/gameShopSlice';
 
 function App() {
   const dispatch = useAppDispatch();
-  const {darkMode} = useAppSelector( state => state.gameShop );
+  const gameShop = useAppSelector( state => state.gameShop );
 
   // useEffect(() => {
   //   dispatch(startSanityGames())
   // }, [])
 
-  // if(gamesState.games.length === 0) return<></>;
+  // if(gameShop.isLoading) return<></>;
 
   return (
-    <ThemeProvider theme={darkMode? darkTheme: theme}>
+    <ThemeProvider theme={gameShop.darkMode? darkTheme: theme}>
       <>
         <GlobalStyle />
         <AppRouter/>
