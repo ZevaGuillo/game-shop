@@ -1,15 +1,20 @@
 import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
 import type { RootState } from '../../store'
-import { IGame } from '../../../types/gameType';
+import { GameType } from '../../../types/gameType';
+import { FeaturedType } from '@/types/featuredType';
 
 interface GamesState {
-  games: IGame[],
+  games: GameType[],
+  featured: FeaturedType[],
+  isLoading: boolean,
   darkMode: boolean,
 }
 
 const initialState: GamesState = {
   games: [],
+  featured: [],
+  isLoading: false,
   darkMode: false,
 }
 
@@ -17,15 +22,21 @@ export const gameShopSlice = createSlice({
   name: 'gameShop',
   initialState,
   reducers: {
-    setGamesState: (state, action: PayloadAction<IGame[]>) => {
+    setGamesState: (state, action: PayloadAction<GameType[]>) => {
       state.games = action.payload;
     },
-    setDarkMode: (state)=>{
+    setFeatured: (state, action: PayloadAction<FeaturedType[]>) => {
+      state.featured = action.payload;
+    },
+    setIsLoading: (state, action:PayloadAction<boolean>)=>{
+      state.isLoading = action.payload;
+    },
+    setDarkMode: (state) => {
       state.darkMode = !state.darkMode
     }
   },
 })
 
-export const { setGamesState, setDarkMode } = gameShopSlice.actions
+export const { setGamesState, setFeatured, setIsLoading, setDarkMode } = gameShopSlice.actions
 
 export default gameShopSlice.reducer
