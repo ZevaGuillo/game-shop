@@ -7,6 +7,9 @@ import { Normalize } from 'styled-normalize'
 import { GlobalStyle } from './theme/GlobalStyle';
 import { darkTheme, StyleTheme, theme } from './theme/Theme';
 import { setDarkMode } from './store/slices/gameShop/gameShopSlice';
+import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
+
+const queryClient = new QueryClient()
 
 function App() {
   const dispatch = useAppDispatch();
@@ -20,10 +23,10 @@ function App() {
 
   return (
     <ThemeProvider theme={gameShop.darkMode? darkTheme: theme}>
-      <>
+      <QueryClientProvider client={queryClient}>
         <GlobalStyle />
         <AppRouter/>
-      </>
+      </QueryClientProvider>
     </ThemeProvider>
 
   )
