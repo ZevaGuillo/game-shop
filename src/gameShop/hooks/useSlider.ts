@@ -1,7 +1,7 @@
 import { FeaturedType } from '@/types/featuredType';
 import { useState } from 'react'
 
-export const useSlider = (images:FeaturedType[] | string[]) => {
+export const useSlider = (images:FeaturedType[]) => {
     const [index, setIndex] = useState(0);
     const [direction, setDirection] = useState(0);
   
