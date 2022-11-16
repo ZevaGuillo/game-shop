@@ -61,7 +61,8 @@ export const GlobalStyle = createGlobalStyle`
     }
 
     .btn-google{
-      background-color: ${(props: GlobalProps) => props.theme.colors.googleColor};
+      background-color: ${(props: GlobalProps) =>
+        props.theme.colors.googleColor};
       display: flex;
       align-items: center;
       justify-content: center;
@@ -74,6 +75,16 @@ export const GlobalStyle = createGlobalStyle`
       .icon{
         line-height: 0;
       }
+    }
+
+    .background-blur{
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      z-index: -1;
+      border-radius: 16px;
+      filter: blur(5px);
+      opacity: .4;
     }
 
 `;

@@ -1,3 +1,4 @@
 export interface GenderType {
-    name: string
+    name: string,
+    backgroundUrl: string
 }
