@@ -18,7 +18,7 @@ const SearchInput = () => {
   );
 };
 
-const StyledSearchInput = styled.div`
+const StyledSearchInput = styled.form`
   display: flex;
   align-items: center;
   
