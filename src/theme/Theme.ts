@@ -2,6 +2,7 @@
 const colors = {
   primary: 'red',
   googleColor: '#4285F4',
+  white:'#F2F2F2',
 
   //theme
   bgColor: '#FFFFFF',

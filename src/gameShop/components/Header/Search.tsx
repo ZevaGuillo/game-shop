@@ -10,15 +10,15 @@ const Search = () => {
 
   return (
     <StyledSearch>
-      <form className="search-desktop-form">
+      <div className="search-desktop-form">
         <SearchInput />
-      </form>
+      </div>
 
       {
         isOpen &&
-        <form className="search-form animate__backInDown">
+        <div className="search-form animate__backInDown">
           <SearchInput />
-        </form>
+        </div>
       }
 
       <FiSearch className="icon header" onClick={()=>setIsOpen(!isOpen)}/>

@@ -1,15 +1,16 @@
 import { AnyAction } from '@reduxjs/toolkit';
 import { ThunkAction } from 'redux-thunk';
-import { getGames } from '@/lib/queries/game';
-import { setGamesState } from './gameShopSlice';
+import { setIsLoading } from './gameShopSlice';
 import { RootState } from '@/store/store';
 
 
-export const startSanityGames = (): ThunkAction<void, RootState, unknown, AnyAction> => {
+export const startSanityHome = (): ThunkAction<void, RootState, unknown, AnyAction> => {
     return async (dispatch, getState) => {
-        const games = await getGames();
+        dispatch(setIsLoading(true));
 
-        dispatch(setGamesState(games))
+        dispatch(setIsLoading(false));
+    
     }
 }
+
 

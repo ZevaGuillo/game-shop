@@ -11,9 +11,11 @@
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.0",
     "@sanity/client": "^3.4.1",
+    "@sanity/image-url": "^1.0.1",
     "@types/react-redux": "^7.1.24",
     "@types/styled-components": "^5.1.26",
     "animate.css": "^4.1.1",
+    "framer-motion": "^7.6.6",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.6.0",

@@ -7,8 +7,8 @@ const ToggleSwitch = () => {
   const dispatch = useAppDispatch()
 
   return (
-    <StyledToggleSwitch >
-      <input type="checkbox" onChange={()=> dispatch(setDarkMode())}/>
+    <StyledToggleSwitch htmlFor="toggle">
+      <input type="checkbox" id="toggle" onChange={()=> dispatch(setDarkMode())}/>
       <span className="slider"></span>
     </StyledToggleSwitch>
   );
