@@ -8,7 +8,6 @@ type GenderSectionProps = {
 };
 
 const GenderSection = ({ gender }: GenderSectionProps) => {
-  console.log(gender);
   
   return (
     <>

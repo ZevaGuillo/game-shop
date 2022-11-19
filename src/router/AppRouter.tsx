@@ -1,6 +1,6 @@
 import AuthRoutes from "@/auth/routes/AuthRoutes"
 import GameShopRoutes from "@/gameShop/routes/GameShopRoutes"
-import { Navigate, Route, Routes } from "react-router-dom"
+import { Route, Routes } from "react-router-dom"
 
 const AppRouter = () => {
   return (
