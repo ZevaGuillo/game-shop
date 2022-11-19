@@ -1,4 +1,5 @@
 import { GenderType } from "@/types/genderType";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import GenderSlider from "./GenderSlider";
 
@@ -7,18 +8,21 @@ type GenderSectionProps = {
 };
 
 const GenderSection = ({ gender }: GenderSectionProps) => {
+  console.log(gender);
+  
   return (
     <>
       <StyledGenderSection className="gender-section">
         <section className="section-desktop">
-          {gender?.slice(0,6).map((gen) => (
-            <StyledItem
-              className="item"
-              key={gen.name}
-              backgroundimg={gen.backgroundUrl}
-            >
-              {gen.name}
-            </StyledItem>
+          {gender?.slice(0, 6).map((gen) => (
+            <Link to={`/catalog/${gen.slug}`} key={gen.name}>
+              <StyledItem
+                className="item"
+                backgroundimg={gen.backgroundUrl}
+              >
+                {gen.name}
+              </StyledItem>
+            </Link>
           ))}
         </section>
 
@@ -53,6 +57,7 @@ const StyledGenderSection = styled.article`
 
 const StyledItem = styled.div<{ backgroundimg: string }>`
   position: relative;
+  min-height: 100%;
   background-repeat: no-repeat;
   background-size: cover;
   border-radius: 8px;

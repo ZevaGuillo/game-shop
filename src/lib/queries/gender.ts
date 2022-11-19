@@ -4,6 +4,7 @@ import client from "../sanity";
 const query = `*[_type == "gender"] {
   _id,
   name,
+  "slug": slug.current,
   "backgroundUrl": background.asset->url,
 }`;
 
