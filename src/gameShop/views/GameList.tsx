@@ -7,7 +7,7 @@ const GameList = () => {
     const location = useLocation();
 
     let { g:filter = "" } = queryString.parse(location.search);
-    filter = (filter as string).split(' ')
+    filter = (filter as string).split(',')
     console.log(filter);
     
 

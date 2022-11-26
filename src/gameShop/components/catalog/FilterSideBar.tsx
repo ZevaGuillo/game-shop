@@ -7,7 +7,7 @@ import useFilter from "@/gameShop/hooks/useFilter";
 const FilterSideBar = () => {
   const { genders } = useAppSelector((state) => state.gameShop);
 
-  const { price, setPrice, genderFilter, filterOnChange, onClickFilter } = useFilter();
+  const { price, setPrice, filterGenders, filterOnChange, onClickFilter } = useFilter();
 
   return (
     <StyledFilterSideBar>
@@ -18,7 +18,7 @@ const FilterSideBar = () => {
             control={
               <Checkbox
                 onChange={filterOnChange}
-                checked={!!genderFilter?.includes(gender)}
+                checked={!!filterGenders?.includes(gender)}
                 inputProps={{
                   "aria-labelledby": gender,
                 }}

@@ -4,40 +4,37 @@ import { useState } from "react";
 
 
 const useFilter = () => {
-    const [price, setPrice] = useState<number[]>([20, 37]);
-    const location = useLocation();
     const navigate = useNavigate();
+    const location = useLocation();
+    let { g: genderQuery = "" } = queryString.parse(location.search);
+    const initialGenders = (genderQuery)?(genderQuery as string).split(','):[]
+    
 
-    let { g: genderFilter = "" } = queryString.parse(location.search);
+    const [price, setPrice] = useState<number[]>([20, 37]);
+    const [genders, setGenders] = useState<string[]>(initialGenders);
+
 
     const filterOnChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        if (genderFilter?.includes(event.target.name)) {
-            console.log(genderFilter, "sidebar");
+        if (genders?.includes(event.target.name)) {
 
-            genderFilter = (genderFilter as string)
-                .replace(" " + event.target.name, "")
-                .replace(event.target.name, "");
-            genderFilter = (genderFilter as string).trim();
-            navigate(`/catalog/${genderFilter ? `?g=${genderFilter}` : ""}`);
+            setGenders( genders.filter(g => g !== event.target.name) )
             return;
         }
-
-        navigate(
-            `/catalog/?g=${!!genderFilter ? `${genderFilter}%20` : ""}${event.target.name}`
-        );
+        setGenders(!!genders ? [...genders, event.target.name]: [event.target.name]);
     };
 
     // slider --------------------------------------------------------------------------------
     const onClickFilter = () => {
+
         navigate(
-            `/catalog/?${!!genderFilter ? `g=${genderFilter}&` : ""}min=${price[0]}&max${price[1]}`
+            `/catalog/?${genders.length > 0? `g=${genders}&` : ""}min=${price[0]}&max${price[1]}`
         );
     }
 
     return {
         price,
         setPrice,
-        genderFilter,
+        filterGenders: genders,
         filterOnChange,
         onClickFilter
     }

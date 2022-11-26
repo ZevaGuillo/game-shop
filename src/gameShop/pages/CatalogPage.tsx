@@ -2,9 +2,10 @@ import { useAppSelector } from "@/hooks/redux";
 import { Navigate, useNavigate, useParams } from "react-router-dom";
 import { useEffect } from "react";
 import styled from "styled-components";
-import { Button } from "@mui/material";
+import { Button, Checkbox } from "@mui/material";
 import FilterSideBar from "../components/catalog/FilterSideBar";
 import GameList from "../views/GameList";
+import { FiUser } from "react-icons/fi";
 
 const CatalogPage = () => {
   const params = useParams();
@@ -24,6 +25,7 @@ const CatalogPage = () => {
         <section className="games-list">
           <Button variant="contained">Hello World</Button>
           <GameList/>
+          {/* <Checkbox  icon={<FiUser className="icon" />} checkedIcon={<FiUser className="icon check" />} /> */}
         </section>
       </section>
     </StyledCatalogPage>
