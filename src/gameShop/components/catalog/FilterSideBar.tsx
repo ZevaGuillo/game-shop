@@ -5,9 +5,17 @@ import RangeSlider from "@/components/RangeSlider";
 import useFilter from "@/gameShop/hooks/useFilter";
 
 const FilterSideBar = () => {
-  const { genders } = useAppSelector((state) => state.gameShop);
+  const { genders, platforms } = useAppSelector((state) => state.gameShop);
 
-  const { price, setPrice, filterGenders, filterOnChange, onClickFilter } = useFilter();
+  const {
+    price,
+    setPrice,
+    filterGenders,
+    gendersChange,
+    filterPlatforms,
+    platformsChange,
+    onClickFilter,
+  } = useFilter();
 
   return (
     <StyledFilterSideBar>
@@ -17,7 +25,7 @@ const FilterSideBar = () => {
           <FormControlLabel
             control={
               <Checkbox
-                onChange={filterOnChange}
+                onChange={gendersChange}
                 checked={!!filterGenders?.includes(gender)}
                 inputProps={{
                   "aria-labelledby": gender,
@@ -27,6 +35,26 @@ const FilterSideBar = () => {
               />
             }
             label={gender}
+          />
+        </div>
+      ))}
+
+      <h3>Platforms</h3>
+      {platforms.map((platform) => (
+        <div key={platform.name}>
+          <FormControlLabel
+            control={
+              <Checkbox
+                onChange={platformsChange}
+                checked={!!filterPlatforms?.includes(platform.name)}
+                inputProps={{
+                  "aria-labelledby": platform.name,
+                }}
+                size="small"
+                name={platform.name}
+              />
+            }
+            label={platform.name}
           />
         </div>
       ))}
