@@ -1,11 +1,22 @@
 import styled from "styled-components";
 import { useAppSelector } from "../../../hooks/redux";
-import { Checkbox, FormControlLabel, Button } from "@mui/material";
+import { MdExpandMore, MdExpandLess } from "react-icons/md";
+import { Checkbox, FormControlLabel, Button, Collapse } from "@mui/material";
 import RangeSlider from "@/components/RangeSlider";
 import useFilter from "@/gameShop/hooks/useFilter";
+import { useState, useEffect } from 'react';
 
 const FilterSideBar = () => {
   const { genders, platforms } = useAppSelector((state) => state.gameShop);
+  const [openGenders, setOpenGenders] = useState(true);
+  const [openPlatforms, setOpenPlatforms] = useState(true);
+
+  const handleGendersClick = () => {
+    setOpenGenders(!openGenders);
+  };
+  const handlePlatformsClick = () => {
+    setOpenPlatforms(!openPlatforms);
+  };
 
   const {
     price,
@@ -20,51 +31,77 @@ const FilterSideBar = () => {
   return (
     <StyledFilterSideBar>
       <h2>FILTERS</h2>
-      {genders.map((gender) => (
-        <div key={gender}>
-          <FormControlLabel
-            control={
-              <Checkbox
-                onChange={gendersChange}
-                checked={!!filterGenders?.includes(gender)}
-                inputProps={{
-                  "aria-labelledby": gender,
-                }}
-                size="small"
-                name={gender}
-              />
-            }
-            label={gender}
-          />
-        </div>
-      ))}
-
-      <h3>Platforms</h3>
-      {platforms.map((platform) => (
-        <div key={platform.name}>
-          <FormControlLabel
-            control={
-              <Checkbox
-                onChange={platformsChange}
-                checked={!!filterPlatforms?.includes(platform.name)}
-                inputProps={{
-                  "aria-labelledby": platform.name,
-                }}
-                size="small"
-                name={platform.name}
-              />
-            }
-            label={platform.name}
-          />
-        </div>
-      ))}
       <h3>Price</h3>
       <RangeSlider value={price} setValue={setPrice} />
+
+      <div className="list-header" onClick={handleGendersClick}>
+        <h3>Genders</h3>
+        {openGenders ? (
+          <MdExpandLess className="icon" />
+        ) : (
+          <MdExpandMore className="icon" />
+        )}
+      </div>
+      <Collapse in={openGenders} timeout="auto" unmountOnExit>
+        {genders.map((gender) => (
+          <div key={gender}>
+            <FormControlLabel
+              control={
+                <Checkbox
+                  onChange={gendersChange}
+                  checked={!!filterGenders?.includes(gender)}
+                  inputProps={{
+                    "aria-labelledby": gender,
+                  }}
+                  size="small"
+                  name={gender}
+                />
+              }
+              label={gender}
+            />
+          </div>
+        ))}
+      </Collapse>
+
+      <div className="list-header" onClick={handlePlatformsClick}>
+        <h3>Platforms</h3>
+        {openPlatforms ? (
+          <MdExpandLess className="icon" />
+        ) : (
+          <MdExpandMore className="icon" />
+        )}
+      </div>
+      <Collapse in={openPlatforms} timeout="auto" unmountOnExit>
+        {platforms.map((platform) => (
+          <div key={platform.name}>
+            <FormControlLabel
+              control={
+                <Checkbox
+                  onChange={platformsChange}
+                  checked={!!filterPlatforms?.includes(platform.name)}
+                  inputProps={{
+                    "aria-labelledby": platform.name,
+                  }}
+                  size="small"
+                  name={platform.name}
+                />
+              }
+              label={platform.name}
+            />
+          </div>
+        ))}
+      </Collapse>
       <Button onClick={onClickFilter}>Add filter</Button>
     </StyledFilterSideBar>
   );
 };
 
-const StyledFilterSideBar = styled.div``;
+const StyledFilterSideBar = styled.div`
+  .list-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+`;
 
 export default FilterSideBar;

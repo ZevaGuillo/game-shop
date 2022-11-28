@@ -1,11 +1,10 @@
 import { useAppSelector } from "@/hooks/redux";
-import { Navigate, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useEffect } from "react";
 import styled from "styled-components";
-import { Button, Checkbox } from "@mui/material";
 import FilterSideBar from "../components/catalog/FilterSideBar";
 import GameList from "../views/GameList";
-import { FiUser } from "react-icons/fi";
+import FilterNavBar from '../components/catalog/FilterNavBar';
 
 const CatalogPage = () => {
   const params = useParams();
@@ -21,11 +20,12 @@ const CatalogPage = () => {
         <FilterSideBar/>
       </aside>
       <section className="main-section">
-        <nav className="platforms"></nav>
+        <nav className="navbar">
+          <FilterNavBar/>
+        </nav>
         <section className="games-list">
-          <Button variant="contained">Hello World</Button>
           <GameList/>
-          {/* <Checkbox  icon={<FiUser className="icon" />} checkedIcon={<FiUser className="icon check" />} /> */}
+          
         </section>
       </section>
     </StyledCatalogPage>
@@ -38,22 +38,20 @@ const StyledCatalogPage = styled.main`
   gap: 2rem;
 
   .categories-sidebar {
-    width: 25%;
+    width: 20%;
     min-height: 300px;
   }
 
   .main-section {
     flex: 1;
-    .platforms {
+    .navbar {
       width: 100%;
-      height: 4rem;
-      background-color: antiquewhite;
+      height: 3rem;
     }
 
     .games-list {
       width: 100%;
-      height: 300px;
-      background-color: bisque;
+      min-height: 100%;
     }
   }
 `;

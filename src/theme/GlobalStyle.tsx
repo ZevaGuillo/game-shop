@@ -52,8 +52,8 @@ export const GlobalStyle = createGlobalStyle`
         font-size: 1.5em;
       }
     }
-    .icon.check{
-      color: blue;
+    .icon.active{
+      color: ${(props: GlobalProps) => props.theme.colors.primary};
     }
 
     .button{
