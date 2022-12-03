@@ -2,12 +2,15 @@ import { urlFor } from '@/lib/sanity'
 import React from 'react'
 
 type ImageProps={
-    url: string
+    url: string, 
+    className?: string,
 }
 
-const Image = ({url}:ImageProps) => {
+const Image = ({url, className}:ImageProps) => {
   return (
-    <img src={urlFor(url).url()} loading="lazy"/>
+    <picture>
+      <img className={className} src={urlFor(url).url()} loading="lazy"/>
+    </picture>
   )
 }
 

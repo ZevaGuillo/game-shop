@@ -1,23 +1,41 @@
-import { useLocation } from 'react-router-dom';
-import queryString from 'query-string';
+import { useLocation } from "react-router-dom";
+import queryString from "query-string";
+import { useEffect, useState } from 'react';
+import { getGames } from "@/lib/queries/game";
+import { GameType } from "@/types/gameType";
+import styled from "styled-components";
+import CardGame from "../components/CardGame";
 
 const GameList = () => {
+  const [games, setGames] = useState<GameType[]>()
+  const [loading, setLoading] = useState(false)
+  const location = useLocation();
 
-    const location = useLocation();
+  let { g: filter = "" } = queryString.parse(location.search);
+  filter = (filter as string).split(",");
+  console.log(filter);
 
-    let { g:filter = "" } = queryString.parse(location.search);
-    filter = (filter as string).split(',')
-    console.log(filter);
-    
-
+  useEffect(() => {
+    setLoading(true);
+    (async () => {
+      const data = await getGames();
+      setGames(data);
+      setLoading(false);
+    })();
+  }, []);
 
   return (
-    <div>GameList
-        {filter.map(g => (
-            <p key={g}>{g}</p>
-        ))}
-    </div>
-  )
-}
+    <StyledGameList>
+      {games?.map((game) => (
+        <CardGame key={game.name} game={game}/>
+      ))}
+    </StyledGameList>
+  );
+};
 
-export default GameList
+const StyledGameList = styled.div`
+  display: flex;
+  gap: 2rem;
+`
+
+export default GameList;

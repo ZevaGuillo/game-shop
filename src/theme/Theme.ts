@@ -2,10 +2,10 @@
 const colors = {
   primary: 'red',
   googleColor: '#4285F4',
-  white:'#F2F2F2',
+  white: '#F2F2F2',
 
   //theme
-  bgColor: '#FFFFFF',
+  bgColor: '#e0e0e0',
   negative: '#1E1E1E',
   text: 'rgba(30,30,30,0.7)',
   variant: 'rgba(30,30,30,0.05)',
@@ -18,6 +18,10 @@ const colors = {
   authPattern3: '#979ca4',
   authPattern4: '#777d88',
   btnHover: 'rgba(30,30,30,0.8)',
+  //card light
+  cardGradient: 'linear-gradient(145deg, #cacaca32, #f0f0f04b);',
+  cardShadow: ` 5px 5px 10px #d7d7d7,
+                -5px -5px 10px #e9e9e9;`,
 };
 
 const secondaryColors = {
@@ -48,7 +52,7 @@ const darkTheme: StyleTheme = {
     ...theme.colors,
 
     bgColor: '#1E1E1E',
-    negative: '#ffffff',
+    negative: '#e0e0e0',
     text: 'rgba(255,255,255,0.7)',
     variant: 'rgba(255,255,255,0.05)',
     variant1: 'rgba(255,255,255,0.07)',
@@ -60,6 +64,10 @@ const darkTheme: StyleTheme = {
     authPattern3: '#373737',
     authPattern4: '#404040',
     btnHover: 'rgba(255,255,255,0.2)',
+    //card 
+    cardGradient: 'linear-gradient(145deg, #1b1b1b32, #20202032)',
+    cardShadow: `9px 9px 26px #171717,
+    -9px -9px 26px #252525`,
   }
 }
 

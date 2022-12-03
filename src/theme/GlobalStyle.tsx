@@ -90,4 +90,11 @@ export const GlobalStyle = createGlobalStyle`
       opacity: .4;
     }
 
+    .glass{
+      background: ${(props: GlobalProps) => props.theme.colors.cardGradient}; 
+      box-shadow: ${(props: GlobalProps) => props.theme.colors.cardShadow}; 
+
+    }
+
+
 `;

@@ -1,7 +1,8 @@
 export interface GameType{
     name: string,
-    imageUrl: string,
+    backgroundUrl: string,
     featured?: boolean,
+    coverUrl: string,
 }
 
 export type IGamesList = {
