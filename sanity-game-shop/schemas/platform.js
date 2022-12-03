@@ -8,6 +8,14 @@ export default {
             title: 'Name',
             type: 'string',
             validation: (rule) => rule.required(),
+        },
+        {
+            name: 'logo',
+            type: 'image',
+            title: 'Logo',
+            options: {
+                hotspot: true 
+            }
         }
     ],
     preview: {

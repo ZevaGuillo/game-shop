@@ -64,6 +64,15 @@ export default{
         // Media
 
         {
+            name: 'coverPage',
+            type: 'image',
+            title: 'Cover Page',
+            options: {
+                hotspot: true 
+            },
+            group: 'media'
+        },
+        {
             name: 'image',
             type: 'image',
             title: 'Image',
