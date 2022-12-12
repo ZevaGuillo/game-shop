@@ -21,7 +21,7 @@ const CardGame = ({game}:CardProps) => {
 }
 
 const StyledCard = styled.div`
-
+    margin: 0 auto;
     width: 13rem;
     height: 20rem;
     padding: 1rem;
@@ -31,10 +31,11 @@ const StyledCard = styled.div`
         position: relative;
         width: 100%;
         height: 13rem;
+
         .blur{
             position: absolute;
-            width: 110%;
-            height: 95%;
+            width: 90%;
+            height: 100%;
             border-radius: 10%;
             top: 0;
             left: 50%;

@@ -34,7 +34,9 @@ const GameList = () => {
 };
 
 const StyledGameList = styled.div`
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(13rem,1fr));
+  place-content: center;
   gap: 2rem;
 `
 
