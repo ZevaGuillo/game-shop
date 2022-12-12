@@ -4,7 +4,10 @@ import { MdExpandMore, MdExpandLess } from "react-icons/md";
 import { Checkbox, FormControlLabel, Button, Collapse } from "@mui/material";
 import RangeSlider from "@/components/RangeSlider";
 import useFilter from "@/gameShop/hooks/useFilter";
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
+import  { CheckboxProps } from '@mui/material/Checkbox';
+import { styled as muiStyled } from '@mui/material/styles';
+
 
 const FilterSideBar = () => {
   const { genders, platforms } = useAppSelector((state) => state.gameShop);
@@ -47,7 +50,7 @@ const FilterSideBar = () => {
           <div key={gender}>
             <FormControlLabel
               control={
-                <Checkbox
+                <StyledCheckbox
                   onChange={gendersChange}
                   checked={!!filterGenders?.includes(gender)}
                   inputProps={{
@@ -55,6 +58,7 @@ const FilterSideBar = () => {
                   }}
                   size="small"
                   name={gender}
+                  color={"default"}
                 />
               }
               label={gender}
@@ -76,7 +80,7 @@ const FilterSideBar = () => {
           <div key={platform.name}>
             <FormControlLabel
               control={
-                <Checkbox
+                <StyledCheckbox
                   onChange={platformsChange}
                   checked={!!filterPlatforms?.includes(platform.name)}
                   inputProps={{
@@ -101,7 +105,17 @@ const StyledFilterSideBar = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
+    
   }
 `;
+
+
+const StyledCheckbox = muiStyled(Checkbox)<CheckboxProps>(({ theme }) => ({
+  color: '#7a7979',
+ 
+    '&.Mui-checked': {
+      color: '#5550F2'
+    },
+}));
 
 export default FilterSideBar;
