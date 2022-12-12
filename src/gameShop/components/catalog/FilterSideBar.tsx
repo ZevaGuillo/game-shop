@@ -33,7 +33,6 @@ const FilterSideBar = () => {
 
   return (
     <StyledFilterSideBar>
-      <h2>FILTERS</h2>
       <h3>Price</h3>
       <RangeSlider value={price} setValue={setPrice} />
 

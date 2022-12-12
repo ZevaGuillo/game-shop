@@ -22,11 +22,11 @@ const CardGame = ({game}:CardProps) => {
 
 const StyledCard = styled.div`
     margin: 0 auto;
-    width: 13rem;
-    height: 20rem;
-    padding: 1rem;
+    width: 12rem;
+    height: 17rem;
     border-radius: 8px;
     overflow: hidden;
+
     .image{
         position: relative;
         width: 100%;
@@ -34,8 +34,8 @@ const StyledCard = styled.div`
 
         .blur{
             position: absolute;
-            width: 90%;
-            height: 100%;
+            width: 100%;
+            height: 110%;
             border-radius: 10%;
             top: 0;
             left: 50%;
@@ -47,11 +47,12 @@ const StyledCard = styled.div`
             width: 100%;
             height: 100%;
             object-fit: cover;
-            border-radius: 8px;
+            border-radius: 8px 8px 0 0 ;
         }
     }
 
     .content{
+        padding:0rem 1rem;
         display: flex;
         justify-content: center;
         

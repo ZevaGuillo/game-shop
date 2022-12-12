@@ -1,5 +1,4 @@
 import { urlFor } from '@/lib/sanity'
-import React from 'react'
 
 type ImageProps={
     url: string, 

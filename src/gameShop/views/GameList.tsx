@@ -35,7 +35,7 @@ const GameList = () => {
 
 const StyledGameList = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(13rem,1fr));
+  grid-template-columns: repeat(auto-fit, minmax(12rem,1fr));
   place-content: center;
   gap: 2rem;
 `

@@ -1,8 +1,9 @@
 export interface GameType{
     name: string,
     backgroundUrl: string,
-    featured?: boolean,
     coverUrl: string,
+    featured?: boolean,
+    gender?: string[]
 }
 
 export type IGamesList = {

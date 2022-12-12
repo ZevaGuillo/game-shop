@@ -19,7 +19,7 @@ const colors = {
   authPattern4: '#777d88',
   btnHover: 'rgba(30,30,30,0.8)',
   //card light
-  cardGradient: 'linear-gradient(145deg, #cacaca32, #f0f0f04b);',
+  cardGradient: 'linear-gradient(145deg, #ffffff7b, #ecececc7);',
   cardShadow: ` 5px 5px 10px #d7d7d7,
                 -5px -5px 10px #e9e9e9;`,
 };
@@ -65,7 +65,7 @@ const darkTheme: StyleTheme = {
     authPattern4: '#404040',
     btnHover: 'rgba(255,255,255,0.2)',
     //card 
-    cardGradient: 'linear-gradient(145deg, #1b1b1b32, #20202032)',
+    cardGradient: 'linear-gradient(145deg, #333030, #1a1919ce);',
     cardShadow: `9px 9px 26px #171717,
     -9px -9px 26px #252525`,
   }
