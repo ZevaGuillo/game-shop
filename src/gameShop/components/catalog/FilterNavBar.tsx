@@ -24,12 +24,12 @@ const FilterNavBar = () => {
         exclusive={true}
         aria-label="Small sizes"
       >
-        <ToggleButton value="list" key="list">
+        <ToggleButton value="list" key="list" name="list" aria-label="list">
           <BsListUl className="icon" />
         </ToggleButton>
         ,
         <ToggleButton value="grid" key="grid">
-          <BsFillGrid3X3GapFill className="icon" />
+          <BsFillGrid3X3GapFill className="icon" name="grid" aria-label="grid"/>
         </ToggleButton>
         ,
       </ToggleButtonGroup>

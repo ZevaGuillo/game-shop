@@ -7,7 +7,7 @@ const query = `*[_type == "game"] {
     "backgroundUrl": coverPage.asset->url,
     genders[]->{
       name
-    }
+    },
     "discount":
     *[_type == "discounts" && references(^._id)]{
       title,
