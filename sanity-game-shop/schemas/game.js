@@ -16,9 +16,22 @@ export default{
             validation: (rule) => rule.required(),
         },
         {
+            name:'slug',
+            title:'Slug',
+            type:'slug',
+            options:{
+                source: 'name'
+            }
+        },
+        {
             title: 'is Featured?',
             name: 'featured',
             type: 'boolean'
+        },
+        {
+            title: 'Price',
+            name: 'price',
+            type: 'number'
         },
         {
             name: 'genders',
