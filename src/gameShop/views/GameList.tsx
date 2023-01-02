@@ -1,4 +1,4 @@
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import queryString from "query-string";
 import { useEffect, useState } from 'react';
 import { getGames } from "@/lib/queries/game";
@@ -27,7 +27,9 @@ const GameList = () => {
   return (
     <StyledGameList>
       {games?.map((game) => (
-        <CardGame key={game.name} game={game}/>
+        <Link key={game.name} to={`/game/${game.slug}`}>
+          <CardGame  game={game}/>
+        </Link>
       ))}
     </StyledGameList>
   );

@@ -4,6 +4,7 @@ import client from "../sanity";
 const query = `*[_type == "game"] {
     _id,
     name,
+    "slug": slug.current,
     "backgroundUrl": coverPage.asset->url,
     genders[]->{
       name
@@ -30,6 +31,7 @@ export const getGamesWithFilter = async (): Promise<GameType[]> => {
   *[_type == "game"] {
     _id,
     name,
+    "slug": slug.current,
     "backgroundUrl": coverPage.asset->url,
     genders[]->{
       name
@@ -65,3 +67,15 @@ export const getGamesWithFilter = async (): Promise<GameType[]> => {
 //   _id,
 //   name,
 // }`);
+
+export const getGamesBySlug = async (slug:string = ''): Promise<GameType> => {
+  const results = await client.fetch(`
+  *[_type == "game" && slug.current == "${slug}"] {
+    _id,
+    name,
+    "slug": slug.current,
+
+  }`);
+  
+  return results[0];
+};
