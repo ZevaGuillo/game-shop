@@ -18,9 +18,13 @@ const GameList = () => {
   useEffect(() => {
     setLoading(true);
     (async () => {
-      const data = await getGames();
-      setGames(data);
-      setLoading(false);
+      try {
+        const data = await getGames();
+        setGames(data);
+        setLoading(false);
+      } catch (error) {
+        console.log(error);
+      }
     })();
   }, []);
 
