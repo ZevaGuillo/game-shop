@@ -1,6 +1,6 @@
 import { getGender } from "@/lib/queries/gender";
 import { getFeatured } from "@/lib/queries/featured";
-import { setGenders } from "@/store/slices/gameShop/gameShopSlice";
+import { setGenders } from "@/store/gameShop/gameShopSlice";
 import { useEffect, useState } from 'react';
 import { useAppDispatch } from './redux';
 import { GenderType } from '@/types/genderType';
