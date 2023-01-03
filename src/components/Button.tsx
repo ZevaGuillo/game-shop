@@ -3,12 +3,13 @@ import styled from "styled-components";
 type ButtonProps = {
   children: JSX.Element | JSX.Element[],
   className?: string,
+  type?:  "button" | "submit" | "reset" | undefined
 };
 
-const Button = ({ children, className }: ButtonProps) => {
+const Button = ({ children, className, type }: ButtonProps) => {
   let classN = `button ${className}`;
   return (
-    <StyledButton className={classN}>
+    <StyledButton className={classN} type={type}>
       {children}
     </StyledButton>
   );

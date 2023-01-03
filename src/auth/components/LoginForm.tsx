@@ -2,12 +2,25 @@ import Button from "@/components/Button";
 import Input from "@/components/Input";
 import { BsGoogle } from "react-icons/bs";
 import styled from "styled-components";
+import { useForm } from "../../hooks/useForm";
 
 type LoginFormProps = {
   setActiveMenu: React.Dispatch<React.SetStateAction<string>>;
 };
 
 const LoginForm = ({ setActiveMenu }: LoginFormProps) => {
+
+  const { email, password, onInputChange } = useForm({
+    email: "",
+    password: "",
+  });
+
+  const handleSubmit = (even: React.FormEvent<HTMLFormElement>)=>{
+    event?.preventDefault();
+    console.log('fff');
+    
+  };
+
   return (
     <StyledLogin className="login">
       <header className="header">
@@ -24,19 +37,43 @@ const LoginForm = ({ setActiveMenu }: LoginFormProps) => {
         <span>Sign in with Google</span>
       </Button>
 
+<<<<<<< HEAD
       <form className="form">
         <Input
           label="Email"
           type="email"
+=======
+      <form className="form" onSubmit={handleSubmit}>
+        <Input
+          label="Email"
+          type="email"
+          name="email"
+          value={email}
+          onChange={onInputChange}
+>>>>>>> 89205ab (Added states to form from login)
         />
         <Input
           label="Password"
           type="password"
+<<<<<<< HEAD
+=======
+          name="password"
+          value={password}
+          onChange={onInputChange}
+>>>>>>> 89205ab (Added states to form from login)
         />
         <div className="sign">
-          <Button>
+          <Button type="submit" >
             <span>Sign in</span>
           </Button>
+<<<<<<< HEAD
+=======
+          <Link
+            to="/auth/register"
+            className="link">
+            Create an account
+          </Link>
+>>>>>>> 89205ab (Added states to form from login)
         </div>
       </form>
     </StyledLogin>
