@@ -16,8 +16,8 @@ const LoginForm = ({ children }: LoginFormProps) => {
     password: "",
   });
 
-  const handleSubmit = (even: React.FormEvent<HTMLFormElement>)=>{
-    event?.preventDefault();
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>)=>{
+    event.preventDefault();
     console.log('fff');
     
   };

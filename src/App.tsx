@@ -1,12 +1,12 @@
 import { useAppSelector, useAppDispatch } from './hooks/redux';
 import { useEffect, useState } from 'react';
-import { startSanityHome } from './store/slices/gameShop/thunks';
+import { startSanityHome } from './store/gameShop/thunks';
 import AppRouter from './router/AppRouter';
 import { ThemeProvider } from 'styled-components';
 import { Normalize } from 'styled-normalize'
 import { GlobalStyle } from './theme/GlobalStyle';
 import { darkTheme, StyleTheme, theme } from './theme/Theme';
-import { setDarkMode } from './store/slices/gameShop/gameShopSlice';
+import { setDarkMode } from './store/gameShop/gameShopSlice';
 
 
 function App() {
