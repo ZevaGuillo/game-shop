@@ -15,8 +15,8 @@ const LoginForm = ({ setActiveMenu }: LoginFormProps) => {
     password: "",
   });
 
-  const handleSubmit = (even: React.FormEvent<HTMLFormElement>)=>{
-    event?.preventDefault();
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>)=>{
+    event.preventDefault();
     console.log('fff');
     
   };
