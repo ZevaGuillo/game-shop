@@ -8,6 +8,8 @@ import styled from "styled-components";
 
 const RegisterForm = () => {
   const dispatch = useAppDispatch();
+
+  // TODO: Add validations
   const { displayName, email, password, formState, onInputChange } = useForm({
     displayName: "",
     email: "",
@@ -16,8 +18,7 @@ const RegisterForm = () => {
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
-    dispatch(startCreatingUserWithEmailPassword(formState))
-    console.log("fff");
+    dispatch(startCreatingUserWithEmailPassword(formState));
   };
 
   return (

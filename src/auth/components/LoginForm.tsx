@@ -1,5 +1,7 @@
 import Button from "@/components/Button";
 import Input from "@/components/Input";
+import { useAppDispatch } from "@/hooks/redux";
+import { startGoogleSignIn, startLoginWithEmailPassword } from "@/store/auth/thunks";
 import { BsGoogle } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
@@ -11,6 +13,8 @@ type LoginFormProps = {
 
 const LoginForm = ({ children }: LoginFormProps) => {
 
+  const dispatch = useAppDispatch();
+
   const { email, password, onInputChange } = useForm({
     email: "",
     password: "",
@@ -18,14 +22,17 @@ const LoginForm = ({ children }: LoginFormProps) => {
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>)=>{
     event.preventDefault();
-    console.log('fff');
-    
+    dispatch( startLoginWithEmailPassword({email, password}) )
   };
+  
+  const handleGoogleSignIn = ()=>{
+    dispatch(startGoogleSignIn())
+  }
 
   return (
     <StyledLogin className="login">
       <h1 className="title">Sign in</h1>
-      <Button className="btn-google">
+      <Button className="btn-google" onClick={handleGoogleSignIn}>
         <BsGoogle className="icon" />
         <span>Sign in with Google</span>
       </Button>

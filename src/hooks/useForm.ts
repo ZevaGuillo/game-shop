@@ -1,6 +1,8 @@
 import { useState } from 'react';
 
 export const useForm = <T> ( initialForm: T ) => {
+
+    // TODO: Hacer validaciones
   
     const [ formState, setFormState ] = useState<T>( initialForm );
 

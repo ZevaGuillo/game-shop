@@ -1,4 +1,4 @@
-import { registerUserWithEmailPassword } from "@/firebase/providers";
+import { loginWithEmailPassword, registerUserWithEmailPassword, singInWithGoogle } from "@/firebase/providers";
 import { async } from "@firebase/util";
 import { AnyAction } from "@reduxjs/toolkit";
 import { ThunkAction } from "redux-thunk";
@@ -15,18 +15,21 @@ import { checkingCredentials, login, logout } from "./authSlice";
 //     }
 // }
 
-// export const startGoogleSignIn = ()=>{
-//     return async(dispatch) => {
+export const startGoogleSignIn = (): ThunkAction<void, RootState, unknown, AnyAction> => {
+    return async (dispatch) => {
 
-//         dispatch(checkingCredentials());
-//         const result = await singInWithGoogle()
+        dispatch(checkingCredentials());
+        const result = await singInWithGoogle()
 
-//         if(!result.ok) return dispatch( logout(result.errorMessage) )
+        console.log(result);
+        
 
-//         dispatch( login(result) )
+        if(!result.ok) return dispatch( logout(result.errorMessage) )
 
-//     }
-// }
+        dispatch( login(result) )
+
+    }
+}
 
 export const startCreatingUserWithEmailPassword = ({email, password, displayName}:any): ThunkAction<void, RootState, unknown, AnyAction> => {
     return async (dispatch, getState) => {
@@ -49,18 +52,19 @@ export const startCreatingUserWithEmailPassword = ({email, password, displayName
 //     }
 // }
 
-// export const startLoginWithEmailPassword = ({email, password})=>{
-//     return async(dispatch) => {
+export const startLoginWithEmailPassword = ({email, password}:any): ThunkAction<void, RootState, unknown, AnyAction> => {
+    return async (dispatch, getState) => {
 
-//         dispatch(checkingCredentials());
 
-//         const {ok, uid, photoURL,displayName ,errorMessage} = await loginWithEmailPassword({email, password})
+        dispatch(checkingCredentials());
 
-//         if( !ok ) return dispatch( logout({errorMessage}) )
+        const {ok, uid, photoURL,displayName ,errorMessage} = await loginWithEmailPassword({email, password})
 
-//         dispatch( login({uid, displayName, email, photoURL}))
-//     }
-// }
+        if( !ok ) return dispatch( logout({errorMessage}) )
+
+        dispatch( login({uid, displayName, email, photoURL}))
+    }
+}
 
 // export const startLogout = ()=>{
 //     return async(dispatch)=>{
