@@ -1,5 +1,7 @@
 import Button from "@/components/Button";
 import Input from "@/components/Input";
+import { useAppDispatch } from "@/hooks/redux";
+import { startGoogleSignIn, startLoginWithEmailPassword } from "@/store/auth/thunks";
 import { BsGoogle } from "react-icons/bs";
 import styled from "styled-components";
 import { useForm } from "../../hooks/useForm";
@@ -10,6 +12,8 @@ type LoginFormProps = {
 
 const LoginForm = ({ setActiveMenu }: LoginFormProps) => {
 
+  const dispatch = useAppDispatch();
+
   const { email, password, onInputChange } = useForm({
     email: "",
     password: "",
@@ -17,9 +21,12 @@ const LoginForm = ({ setActiveMenu }: LoginFormProps) => {
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>)=>{
     event.preventDefault();
-    console.log('fff');
-    
+    dispatch( startLoginWithEmailPassword({email, password}) )
   };
+  
+  const handleGoogleSignIn = ()=>{
+    dispatch(startGoogleSignIn())
+  }
 
   return (
     <StyledLogin className="login">
@@ -32,17 +39,11 @@ const LoginForm = ({ setActiveMenu }: LoginFormProps) => {
         </div>
       </header>
 
-      <Button className="btn-google">
+      <Button className="btn-google" onClick={handleGoogleSignIn}>
         <BsGoogle className="icon" />
         <span>Sign in with Google</span>
       </Button>
 
-<<<<<<< HEAD
-      <form className="form">
-        <Input
-          label="Email"
-          type="email"
-=======
       <form className="form" onSubmit={handleSubmit}>
         <Input
           label="Email"
@@ -50,30 +51,18 @@ const LoginForm = ({ setActiveMenu }: LoginFormProps) => {
           name="email"
           value={email}
           onChange={onInputChange}
->>>>>>> 89205ab (Added states to form from login)
         />
         <Input
           label="Password"
           type="password"
-<<<<<<< HEAD
-=======
           name="password"
           value={password}
           onChange={onInputChange}
->>>>>>> 89205ab (Added states to form from login)
         />
         <div className="sign">
           <Button type="submit" >
             <span>Sign in</span>
           </Button>
-<<<<<<< HEAD
-=======
-          <Link
-            to="/auth/register"
-            className="link">
-            Create an account
-          </Link>
->>>>>>> 89205ab (Added states to form from login)
         </div>
       </form>
     </StyledLogin>
