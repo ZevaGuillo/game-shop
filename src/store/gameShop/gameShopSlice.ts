@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
-import type { RootState } from '../../store'
-import { GameType } from '../../../types/gameType';
+import type { RootState } from '../store'
+import { GameType } from '../../types/gameType';
 import { FeaturedType } from '@/types/featuredType';
 import { GenderType } from '@/types/genderType';
 

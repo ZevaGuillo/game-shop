@@ -1,30 +1,64 @@
 import Button from "@/components/Button";
 import Input from "@/components/Input";
+import { useAppDispatch } from "@/hooks/redux";
+import { startGoogleSignIn, startLoginWithEmailPassword } from "@/store/auth/thunks";
 import { BsGoogle } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { useForm } from "../../hooks/useForm";
 
 type LoginFormProps = {
   children?: JSX.Element;
 };
 
 const LoginForm = ({ children }: LoginFormProps) => {
+
+  const dispatch = useAppDispatch();
+
+  const { email, password, onInputChange } = useForm({
+    email: "",
+    password: "",
+  });
+
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>)=>{
+    event.preventDefault();
+    dispatch( startLoginWithEmailPassword({email, password}) )
+  };
+  
+  const handleGoogleSignIn = ()=>{
+    dispatch(startGoogleSignIn())
+  }
+
   return (
     <StyledLogin className="login">
       <h1 className="title">Sign in</h1>
-      <Button className="btn-google">
-        <BsGoogle className="icon"/>
+      <Button className="btn-google" onClick={handleGoogleSignIn}>
+        <BsGoogle className="icon" />
         <span>Sign in with Google</span>
       </Button>
 
-      <form className="form">
-        <Input label="Email" type="email" />
-        <Input label="Password" type="password" />
+      <form className="form" onSubmit={handleSubmit}>
+        <Input
+          label="Email"
+          type="email"
+          name="email"
+          value={email}
+          onChange={onInputChange}
+        />
+        <Input
+          label="Password"
+          type="password"
+          name="password"
+          value={password}
+          onChange={onInputChange}
+        />
         <div className="sign">
-          <Button>
+          <Button type="submit" >
             <span>Sign in</span>
           </Button>
-          <Link to="/auth/register" className="link">
+          <Link
+            to="/auth/register"
+            className="link">
             Create an account
           </Link>
         </div>

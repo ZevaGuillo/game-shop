@@ -1,7 +1,4 @@
-import Input from "@/components/Input";
 import styled from "styled-components";
-import LogoSVG from "@/components/LogoSVG";
-import { Link } from "react-router-dom";
 import Layout from "../layout";
 import LoginForm from "../components/LoginForm";
 
