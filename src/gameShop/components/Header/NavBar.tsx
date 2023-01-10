@@ -1,10 +1,11 @@
 import LogoSVG from "@/components/LogoSVG";
-import ToggleSwitch from "@/components/ToggleSwitch";
 import { FiSearch, FiShoppingCart, FiUser, FiHeart } from "react-icons/fi";
 import { GiHamburgerMenu } from "react-icons/gi";
 import styled from "styled-components";
 import Search from "./Search";
 import SearchInput from "./Search";
+import Usermenu from "./Usermenu";
+import { Link } from 'react-router-dom';
 
 type NavBarProps = {
   toggleDrawer: () => void;
@@ -18,22 +19,23 @@ const NavBar = ({ toggleDrawer }: NavBarProps) => {
         className="drawer">
         <GiHamburgerMenu className="icon" />
       </div>
-      <div className="logo-header">
+      <Link className="logo-header" to={'/'}>
         <LogoSVG className="logo-ico" />
         <span>Gameland</span>
-      </div>
+      </Link>
 
       <div className="search">
         <Search />
       </div>
 
       <div className="options">
-        <ToggleSwitch/>
+        {/* <ToggleSwitch/> */}
 
         <FiHeart className="icon favorite" />
 
         <FiShoppingCart className="icon" />
 
+        <Usermenu/>
         {/* <FiUser className="icon" /> */}
       </div>
     </StyledNavBar>
@@ -64,6 +66,7 @@ const StyledNavBar = styled.nav.attrs(props => ({
     flex: 1;
     align-items: center;
     gap: 0.5rem;
+    text-decoration: none;
     .logo-ico {
       height: 100%;
     }
