@@ -52,6 +52,9 @@ export const GlobalStyle = createGlobalStyle`
         font-size: 1.5em;
       }
     }
+    .icon.active{
+      color: ${(props: GlobalProps) => props.theme.colors.primary};
+    }
 
     .button{
       background-color: ${(props: GlobalProps) => props.theme.colors.primary};
@@ -86,5 +89,12 @@ export const GlobalStyle = createGlobalStyle`
       filter: blur(5px);
       opacity: .4;
     }
+
+    .glass{
+      background: ${(props: GlobalProps) => props.theme.colors.cardGradient}; 
+      box-shadow: ${(props: GlobalProps) => props.theme.colors.cardShadow}; 
+
+    }
+
 
 `;

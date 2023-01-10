@@ -1,14 +1,24 @@
-import { urlFor } from '@/lib/sanity'
-import React from 'react'
+import { urlFor } from "@/lib/sanity";
 
-type ImageProps={
-    url: string
-}
+type ImageProps = {
+  url: string;
+  className?: string;
+  alt?: string;
+};
 
-const Image = ({url}:ImageProps) => {
+const Image = ({ url, className, alt }: ImageProps) => {
   return (
-    <img src={urlFor(url).url()} loading="lazy"/>
-  )
-}
+    <picture>
+      <img
+        className={className}
+        src={urlFor(url).url()}
+        loading="lazy"
+        alt={alt}
+        width={190}
+        height={208}
+      />
+    </picture>
+  );
+};
 
-export default Image
+export default Image;
