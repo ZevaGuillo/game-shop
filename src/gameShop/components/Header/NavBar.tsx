@@ -43,6 +43,7 @@ const NavBar = ({ toggleDrawer }: NavBarProps) => {
 const StyledNavBar = styled.nav.attrs(props => ({
   className: props.className,
 }))`
+  z-index: 9991;
   position: relative;
   background-color: ${props => props.theme.colors.bgColor};
   height: 3rem;

@@ -20,15 +20,16 @@ const SearchInput = () => {
 };
 
 const StyledSearchInput = styled.form`
-  
+  display: flex;
+
   .input {
+    flex: 1;
     min-height: 37px;
     width: 40vw;
     padding: 0 1rem;
     color: ${(props) => props.theme.colors.text};
     font-size: 15px;
     border: none;
-    border-radius: 6px 0 0 6px;
     background-color: ${(props) => props.theme.colors.variant};
   }
 
@@ -38,7 +39,6 @@ const StyledSearchInput = styled.form`
     max-height: 37px;
     padding: 0.5em 1em;
     border: none;
-    border-radius: 0 6px 6px 0;
     background-color: ${(props) => props.theme.colors.inputColor};
     color: #fff;
     font-size: 15px;
@@ -67,6 +67,17 @@ const StyledSearchInput = styled.form`
     border-color: #3898ec;
     outline: none;
   }
+
+
+  @media (min-width: 900px) {
+    .input{
+      border-radius: 6px 0 0 6px;
+    }
+    .button--submit {
+      border-radius: 0 6px 6px 0;
+    }
+  }
+
 `;
 
 export default SearchInput;

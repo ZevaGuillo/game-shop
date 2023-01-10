@@ -1,5 +1,5 @@
 import SearchInput from "@/components/SearchInput";
-import React from "react";
+import Drawer from "@mui/material/Drawer";
 import { FiSearch } from "react-icons/fi";
 import styled from "styled-components";
 import { useState } from "react";
@@ -13,10 +13,16 @@ const Search = () => {
         <SearchInput />
       </div>
 
-      <div className="search-form animate__backInDown">
-        <SearchInput />
-      </div>
-
+      <Drawer
+        anchor="top"
+        open={isOpen}
+        onClose={() => setIsOpen(!isOpen)}
+        className="drawer"
+        >
+        <div className="search-form animate__backInDown" style={{paddingTop:'3rem'}}>
+          <SearchInput />
+        </div>
+      </Drawer>
 
       <FiSearch
         className="icon header"
@@ -32,11 +38,8 @@ const StyledSearch = styled.div`
   .search-desktop-form {
     display: none;
   }
-
   .search-form {
-    position: absolute;
-    top: 3rem;
-    right: 0;
+    background-color: blue;
     width: 100%;
     z-index: 11;
   }
@@ -50,9 +53,10 @@ const StyledSearch = styled.div`
       display: none;
     }
     .icon.header {
-      display: none;
+      display: none ;
     }
   }
 `;
+
 
 export default Search;

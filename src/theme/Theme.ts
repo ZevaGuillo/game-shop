@@ -8,7 +8,7 @@ const colors = {
   bgColor: '#e0e0e0',
   negative: '#1E1E1E',
   text: 'rgba(30,30,30,0.7)',
-  variant: '#EEE',
+  variant: '#d6d6d6',
   variant1: 'rgba(30,30,30,0.07)',
   variant2: 'rgba(30,30,30,0.35)',
   variant3: 'rgba(30,30,30,0.5)',
