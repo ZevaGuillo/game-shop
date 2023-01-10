@@ -13,7 +13,9 @@ type NavBarProps = {
 const NavBar = ({ toggleDrawer }: NavBarProps) => {
   return (
     <StyledNavBar className="container">
-      <div onClick={toggleDrawer} className="drawer">
+      <div
+        onClick={toggleDrawer}
+        className="drawer">
         <GiHamburgerMenu className="icon" />
       </div>
       <div className="logo-header">
@@ -21,27 +23,30 @@ const NavBar = ({ toggleDrawer }: NavBarProps) => {
         <span>Gameland</span>
       </div>
 
-      <div className="options">
+      <div className="search">
         <Search />
+      </div>
 
+      <div className="options">
         <ToggleSwitch/>
 
         <FiHeart className="icon favorite" />
 
         <FiShoppingCart className="icon" />
 
-        <FiUser className="icon" />
+        {/* <FiUser className="icon" /> */}
       </div>
     </StyledNavBar>
   );
 };
 
-const StyledNavBar = styled.nav.attrs((props) => ({
+const StyledNavBar = styled.nav.attrs(props => ({
   className: props.className,
 }))`
   position: relative;
-  background-color: ${(props) => props.theme.colors.bgColor};
+  background-color: ${props => props.theme.colors.bgColor};
   height: 3rem;
+  width: 100vw;
   max-height: 3rem;
   padding-top: 0.7rem;
   padding-bottom: 0.7rem;
@@ -49,13 +54,13 @@ const StyledNavBar = styled.nav.attrs((props) => ({
   justify-content: space-between;
   align-items: center;
   gap: 1rem;
-  border-bottom: 1px solid ${(props) => props.theme.colors.variant};
+  border-bottom: 1px solid ${props => props.theme.colors.variant};
   transition: all 0.25s ease;
 
   .logo-header {
     height: 100%;
-    flex: 1;
     display: flex;
+    flex: 1;
     align-items: center;
     gap: 0.5rem;
     .logo-ico {
@@ -65,7 +70,7 @@ const StyledNavBar = styled.nav.attrs((props) => ({
       font-size: 1.2em;
       line-height: 0;
       user-select: none;
-      color: ${(props) => props.theme.colors.negative};
+      color: ${props => props.theme.colors.negative};
     }
     &:hover {
       cursor: pointer;
@@ -87,6 +92,7 @@ const StyledNavBar = styled.nav.attrs((props) => ({
     padding-top: 1rem;
     padding-bottom: 1rem;
     .logo-header {
+      flex: none;
       .logo-ico {
         height: 90%;
       }
@@ -102,6 +108,10 @@ const StyledNavBar = styled.nav.attrs((props) => ({
       .favorite {
         display: inline-block;
       }
+    }
+    .search {
+      display: grid;
+      place-content: center;
     }
   }
 `;

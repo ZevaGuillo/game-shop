@@ -2,11 +2,10 @@ import SearchInput from "@/components/SearchInput";
 import React from "react";
 import { FiSearch } from "react-icons/fi";
 import styled from "styled-components";
-import { useState } from 'react';
+import { useState } from "react";
 
 const Search = () => {
   const [isOpen, setIsOpen] = useState(false);
-
 
   return (
     <StyledSearch>
@@ -14,21 +13,23 @@ const Search = () => {
         <SearchInput />
       </div>
 
-      {
-        isOpen &&
-        <div className="search-form animate__backInDown">
-          <SearchInput />
-        </div>
-      }
+      <div className="search-form animate__backInDown">
+        <SearchInput />
+      </div>
 
-      <FiSearch className="icon header" onClick={()=>setIsOpen(!isOpen)}/>
+
+      <FiSearch
+        className="icon header"
+        onClick={() => setIsOpen(!isOpen)}
+      />
     </StyledSearch>
   );
 };
 
 const StyledSearch = styled.div`
   display: flex;
-  .search-desktop-form{
+  width: 100%;
+  .search-desktop-form {
     display: none;
   }
 
@@ -36,16 +37,19 @@ const StyledSearch = styled.div`
     position: absolute;
     top: 3rem;
     right: 0;
+    width: 100%;
+    z-index: 11;
   }
 
   @media (min-width: 900px) {
-    .search-desktop-form{
+    .search-desktop-form {
       display: block;
+      width: 100%;
     }
-    .search-form{
+    .search-form {
       display: none;
     }
-    .icon.header{
+    .icon.header {
       display: none;
     }
   }

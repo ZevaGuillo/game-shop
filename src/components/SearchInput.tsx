@@ -10,6 +10,7 @@ const SearchInput = () => {
         placeholder="Search Game Here"
         autoComplete="off"
       />
+      
       <button className="button--submit">
         <span>Search</span>
         <FiSearch className="icon icon-button" />
@@ -19,12 +20,10 @@ const SearchInput = () => {
 };
 
 const StyledSearchInput = styled.form`
-  display: flex;
-  align-items: center;
   
-
   .input {
     min-height: 37px;
+    width: 40vw;
     padding: 0 1rem;
     color: ${(props) => props.theme.colors.text};
     font-size: 15px;
@@ -34,6 +33,7 @@ const StyledSearchInput = styled.form`
   }
 
   .button--submit {
+    z-index: 11;
     min-height: 37px;
     max-height: 37px;
     padding: 0.5em 1em;
