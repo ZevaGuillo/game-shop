@@ -8,8 +8,8 @@ type InputProps = {
 const Input = ({ label, type }: InputProps) => {
   return (
     <StyleInput>
-      <label htmlFor="inp" className="inp">
-        <input type={type} id="inp" placeholder="&nbsp;" />
+      <label htmlFor={`inp-${label}`} className="inp">
+        <input type={type} id={`inp-${label}`} placeholder="&nbsp;" />
         <span className="label">{label}</span>
         <span className="focus-bg"></span>
       </label>
@@ -20,7 +20,6 @@ const Input = ({ label, type }: InputProps) => {
 const StyleInput = styled.div`
   position: relative;
   width: 100%;
-  min-width: 280px;
   height: 3rem;
 
   .inp {
@@ -48,7 +47,7 @@ const StyleInput = styled.div`
       height: 100%;
       background: ${(props) => props.theme.colors.variant};
       z-index: -1;
-      border-radius: 8px 8px 0 0;
+      border-radius: 8px;
       transform: scaleX(0);
       transform-origin: left;
     }
@@ -60,7 +59,7 @@ const StyleInput = styled.div`
     appearance: none;
     width: 100%;
     border: 0;
-    border-radius: 8px 8px 0 0;
+    border-radius: 8px;
     font-family: inherit;
     padding: 16px 12px 2.5px 12px;
     height: 3rem;
@@ -90,7 +89,6 @@ const StyleInput = styled.div`
   .inp input:focus {
     background: ${(props) => props.theme.colors.variant1};
     outline: none;
-    box-shadow: inset 0 -2px 0 ${(props) => props.theme.colors.primary};
   }
   .inp input:focus + .label {
     color: ${(props) => props.theme.colors.primary};
