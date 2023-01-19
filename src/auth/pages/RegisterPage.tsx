@@ -4,7 +4,9 @@ import Layout from "../layout";
 export const RegisterPage = () => {
   return (
     <Layout>
-      <RegisterForm/>
+      <div>
+      {/* <RegisterForm /> */}
+      </div>
     </Layout>
   );
 };
