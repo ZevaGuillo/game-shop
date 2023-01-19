@@ -34,7 +34,7 @@ const LoginForm = ({ setActiveMenu }: LoginFormProps) => {
         <h1 className="title">Sign in</h1>
         <div
           className="link-register"
-          onClick={() => setActiveMenu("settings")}>
+          onClick={() => setActiveMenu("register")}>
           Create an account {'>'}
         </div>
       </header>

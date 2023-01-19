@@ -5,13 +5,18 @@ import styled from "styled-components";
 import Search from "./Search";
 import SearchInput from "./Search";
 import Usermenu from "./Usermenu";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
+import { useAppSelector } from "@/hooks/redux";
+import Button from "@/components/Button";
+import SignupModal from "./SignupModal";
 
 type NavBarProps = {
   toggleDrawer: () => void;
 };
 
 const NavBar = ({ toggleDrawer }: NavBarProps) => {
+  const { status } = useAppSelector(state => state.auth);
+
   return (
     <StyledNavBar className="container">
       <div
@@ -19,7 +24,9 @@ const NavBar = ({ toggleDrawer }: NavBarProps) => {
         className="drawer">
         <GiHamburgerMenu className="icon" />
       </div>
-      <Link className="logo-header" to={'/'}>
+      <Link
+        className="logo-header"
+        to={"/"}>
         <LogoSVG className="logo-ico" />
         <span>Gameland</span>
       </Link>
@@ -31,11 +38,17 @@ const NavBar = ({ toggleDrawer }: NavBarProps) => {
       <div className="options">
         {/* <ToggleSwitch/> */}
 
-        <FiHeart className="icon favorite" />
+        {status === "authenticated" ? (
+          <>
+            <FiHeart className="icon favorite" />
 
-        <FiShoppingCart className="icon" />
+            <FiShoppingCart className="icon" />
 
-        <Usermenu/>
+            <Usermenu />
+          </>
+        ) : (
+          <SignupModal/>
+        )}
         {/* <FiUser className="icon" /> */}
       </div>
     </StyledNavBar>

@@ -28,19 +28,6 @@ const UserDropdown = ({ setIsOpen }: UserDropdownProps) => {
     setMenuHeight(height);
   }
 
-  const DropdownItem = (props: any) => {
-    return (
-      <a
-        href="#"
-        className="menu-item"
-        onClick={() => props.goToMenu && setActiveMenu(props.goToMenu)}>
-        <span className="icon-button">{props.leftIcon}</span>
-        {props.children}
-        <span className="icon-right">{props.rightIcon}</span>
-      </a>
-    );
-  };
-
   return (
     <div
       className="dropdown"
@@ -62,28 +49,7 @@ const UserDropdown = ({ setIsOpen }: UserDropdownProps) => {
           </div>
         </div>
       </CSSTransition>
-
-      <CSSTransition
-        in={activeMenu === "settings"}
-        timeout={500}
-        classNames="menu-secondary"
-        unmountOnExit
-        onEnter={calcHeight}>
-        <div className="menu">
-          <RegisterForm setActiveMenu={setActiveMenu} />
-        </div>
-      </CSSTransition>
-
-      <CSSTransition
-        in={activeMenu === "animals"}
-        timeout={500}
-        classNames="menu-secondary"
-        unmountOnExit
-        onEnter={calcHeight}>
-        <div className="menu">
-          <LoginForm setActiveMenu={setActiveMenu} />
-        </div>
-      </CSSTransition>
+      
     </div>
   );
 };

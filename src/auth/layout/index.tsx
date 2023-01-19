@@ -18,10 +18,6 @@ const Layout = ({ children }: LayoutProps) => {
         <LogoSVG/>
       </div> */}
       <div className="content">
-        <nav className="navigation">
-          <Link to="/auth/login">Sing in</Link>
-          <Link to="/auth/register">Sing up</Link>
-        </nav>
         {children}
       </div>
     </StyledLayout>
@@ -32,14 +28,16 @@ const StyledLayout = styled.main`
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 100vh;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
   background-color: transparent;
   overflow-y: hidden;
   transition: all 0.25s ease;
   .image {
     position: relative;
-    width: 100vw;
-    height: 40vh;
+    width: 100%;
+    height: 40%;
     img {
       width: 100%;
       position: relative;
@@ -81,18 +79,21 @@ const StyledLayout = styled.main`
   @media (min-width: 900px) {
     flex-direction: row-reverse;
     .image {
-      min-height: 100vh;
-      max-width: 60vw;
+      min-height: 100%;
+      max-width: 60%;
       svg {
         display: block;
-        height: 100vh;
+        height: 100%;
         left: 0;
         z-index: 10;
         transform: rotate(0deg);
       }
     }
     .content {
-      max-width: 40vw;
+      max-width: 45%;
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-end;
     }
   }
 `;

@@ -28,7 +28,7 @@ const RegisterForm = ({ setActiveMenu }: RegisterFormProps) => {
 
   return (
     <StyledRegister>
-      <div onClick={() => setActiveMenu("main")}>{'<'}go to login</div>
+      <div onClick={() => setActiveMenu("login")}>{'<'}go to login</div>
       <h1>Sign Up</h1>
       <form
         className="form"

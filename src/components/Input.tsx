@@ -101,10 +101,6 @@ const StyleInput = styled.div`
   .inp input:focus {
     background: ${props => props.theme.colors.variant1};
     outline: none;
-
-    box-shadow: inset 0 -2px 0 ${props => props.theme.colors.primary};
-
-    box-shadow: inset 0 -2px 0 ${props => props.theme.colors.primary};
   }
   .inp input:focus + .label {
     color: ${props => props.theme.colors.primary};
