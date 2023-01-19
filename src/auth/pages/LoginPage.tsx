@@ -9,7 +9,7 @@ const LoginPage = () => {
   return (
     <Layout>
       <StyledPage>
-        <LoginForm/>
+        {/* <LoginForm/> */}
       </StyledPage>
     </Layout>
   );
