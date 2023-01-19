@@ -101,10 +101,10 @@ const StyleInput = styled.div`
   .inp input:focus {
     background: ${props => props.theme.colors.variant1};
     outline: none;
-<<<<<<< HEAD
-=======
+
     box-shadow: inset 0 -2px 0 ${props => props.theme.colors.primary};
->>>>>>> 89205ab (Added states to form from login)
+
+    box-shadow: inset 0 -2px 0 ${props => props.theme.colors.primary};
   }
   .inp input:focus + .label {
     color: ${props => props.theme.colors.primary};
