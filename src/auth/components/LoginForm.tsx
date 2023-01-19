@@ -1,36 +1,44 @@
 import Button from "@/components/Button";
 import Input from "@/components/Input";
 import { BsGoogle } from "react-icons/bs";
-import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 type LoginFormProps = {
-  children?: JSX.Element;
+  setActiveMenu: React.Dispatch<React.SetStateAction<string>>;
 };
 
-const LoginForm = ({ children }: LoginFormProps) => {
+const LoginForm = ({ setActiveMenu }: LoginFormProps) => {
   return (
     <StyledLogin className="login">
-      <h1 className="title">Sign in</h1>
+      <header className="header">
+        <h1 className="title">Sign in</h1>
+        <div
+          className="link-register"
+          onClick={() => setActiveMenu("settings")}>
+          Create an account {'>'}
+        </div>
+      </header>
+
       <Button className="btn-google">
-        <BsGoogle className="icon"/>
+        <BsGoogle className="icon" />
         <span>Sign in with Google</span>
       </Button>
 
       <form className="form">
-        <Input label="Email" type="email" />
-        <Input label="Password" type="password" />
+        <Input
+          label="Email"
+          type="email"
+        />
+        <Input
+          label="Password"
+          type="password"
+        />
         <div className="sign">
           <Button>
             <span>Sign in</span>
           </Button>
-          <Link to="/auth/register" className="link">
-            Create an account
-          </Link>
         </div>
       </form>
-
-      <section></section>
     </StyledLogin>
   );
 };
@@ -41,20 +49,35 @@ const StyledLogin = styled.section`
   display: flex;
   flex-direction: column;
   place-content: center;
-  gap: 1rem;
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 1rem;
+    h1 {
+      font-size: 2em;
+      margin-block-start: 0;
+      margin-block-end: 0;
+    }
+    .link-register{
+      cursor: pointer;
+    }
+  }
+  .btn-google {
+    margin-bottom: 1rem;
+  }
+
 
   .form {
     width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: 1rem;
     .sign {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      .link {
-        text-align: end;
-      }
       button {
         width: fit-content;
       }

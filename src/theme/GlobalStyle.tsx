@@ -35,6 +35,17 @@ export const GlobalStyle = createGlobalStyle`
       color: ${(props: GlobalProps) => props.theme.colors.negative};
     }
 
+    ul{
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    a{
+      color: ${(props: GlobalProps) => props.theme.colors.text};
+      text-decoration: none;
+    }
+
     .container{
       padding-left:.7rem;
       padding-right: .7rem;

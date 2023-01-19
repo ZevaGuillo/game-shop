@@ -22,6 +22,8 @@ const colors = {
   cardGradient: 'linear-gradient(145deg, #ffffff7b, #ecececc7);',
   cardShadow: ` 5px 5px 10px #d7d7d7,
                 -5px -5px 10px #e9e9e9;`,
+  // menu
+  menubg: '#EDEDED',
 };
 
 const secondaryColors = {
@@ -68,6 +70,8 @@ const darkTheme: StyleTheme = {
     cardGradient: 'linear-gradient(145deg, #333030, #1a1919ce);',
     cardShadow: `9px 9px 26px #171717,
     -9px -9px 26px #252525`,
+    //menu
+    menubg:'#333333'
   }
 }
 

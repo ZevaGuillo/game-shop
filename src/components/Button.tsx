@@ -1,5 +1,3 @@
-import React from "react";
-import { IconBaseProps, IconType } from "react-icons/lib";
 import styled from "styled-components";
 
 type ButtonProps = {
@@ -21,13 +19,13 @@ const StyledButton = styled.button.attrs((props) => ({
 }))`
 
   border: none;
-  border-radius: 2rem;
+  border-radius: 8px;
   box-sizing: border-box;
   letter-spacing: .1em;
   font-size: .875rem;
   font-weight: 600;
   line-height: 1.25rem;
-  padding: .75rem 1rem;
+  padding: .55rem 1rem;
   text-align: center;
   text-decoration-thickness: auto;
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
