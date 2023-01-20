@@ -12,9 +12,23 @@ const SignupModal = () => {
 
   return (
     <StyledSignupModal>
-      <Button onClick={() => setIsOpen(!isOpen)}>
-        <span>Sign up</span>
-      </Button>
+      <section className="buttons">
+        <Button
+          className="login"
+          onClick={() => {
+            setActiveMenu("login");
+            setIsOpen(!isOpen);
+          }}>
+          <span>Log in</span>
+        </Button>
+        <Button
+          onClick={() => {
+            setActiveMenu("register");
+            setIsOpen(!isOpen);
+          }}>
+          <span>Create account</span>
+        </Button>
+      </section>
 
       {isOpen && (
         <div
@@ -47,6 +61,18 @@ const SignupModal = () => {
 const StyledSignupModal = styled.main`
   --speed: 500ms;
 
+  .buttons {
+    display: flex;
+    gap: 1rem;
+    .login {
+      background-color: transparent;
+      border: 2px solid ${props => props.theme.colors.primary};
+      span {
+        color: ${props => props.theme.colors.negative};
+      }
+    }
+  }
+
   .modal {
     top: 0;
     left: 0;
@@ -54,7 +80,7 @@ const StyledSignupModal = styled.main`
     position: fixed;
     width: 100vw;
     height: 100vh;
-    background-color: #212121ac;
+    background-color: #212121c3;
     display: flex;
     justify-content: center;
     align-items: flex-end;

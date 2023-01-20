@@ -1,11 +1,8 @@
-import { loginWithEmailPassword, registerUserWithEmailPassword, singInWithGoogle } from "@/firebase/providers";
-import { async } from "@firebase/util";
+import { loginWithEmailPassword, logoutFirebase, registerUserWithEmailPassword, singInWithGoogle } from "@/firebase/providers";
 import { AnyAction } from "@reduxjs/toolkit";
 import { ThunkAction } from "redux-thunk";
 import { RootState } from "../store";
 import { checkingCredentials, login, logout } from "./authSlice";
-// import { loginWithEmailPassword, logoutFirebase, registerUserWithEmailPassword, singInWithGoogle } from "../../firebase/providers";
-// import { checkingCredentials, login, logout } from "./authSlice"
 
 // export const checkingAuthentication = (email, password) => {
 //     return async(dispatch) => {
@@ -66,12 +63,12 @@ export const startLoginWithEmailPassword = ({email, password}:any): ThunkAction<
     }
 }
 
-// export const startLogout = ()=>{
-//     return async(dispatch)=>{
+export const startLogout = (): ThunkAction<void, RootState, unknown, AnyAction> => {
+    return async (dispatch, getState) => {
 
-//         await logoutFirebase();
-//         dispatch(clearNotesLogout())
-//         dispatch( logout({}) );
+        await logoutFirebase();
+        // dispatch(clearNotesLogout())
+        dispatch( logout({}) );
 
-//     }
-// }
+    }
+}
