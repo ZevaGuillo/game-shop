@@ -88,6 +88,7 @@ const StyledLogin = styled.section`
     }
     .link-register{
       cursor: pointer;
+      color: ${props => props.theme.colors.variant3};
     }
   }
   .btn-google {

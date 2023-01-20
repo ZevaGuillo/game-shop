@@ -1,6 +1,6 @@
 
 const colors = {
-  primary: 'red',
+  primary: '#7D52D9',
   googleColor: '#4285F4',
   white: '#F2F2F2',
 

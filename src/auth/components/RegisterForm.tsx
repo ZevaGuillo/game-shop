@@ -28,7 +28,7 @@ const RegisterForm = ({ setActiveMenu }: RegisterFormProps) => {
 
   return (
     <StyledRegister>
-      <div onClick={() => setActiveMenu("login")}>{'<'}go to login</div>
+      <div className="link-login" onClick={() => setActiveMenu("login")}>{'<'}go to login</div>
       <h1>Sign Up</h1>
       <form
         className="form"
@@ -68,6 +68,11 @@ const StyledRegister = styled.section`
   display: flex;
   flex-direction: column;
   place-content: center;
+
+  .link-login{
+    cursor: pointer;
+    color: ${props => props.theme.colors.variant3};
+  }
 
   h1 {
     font-size: 2em;
