@@ -5,13 +5,16 @@ import Button from "@/components/Button";
 import Input from "@/components/Input";
 import React from "react";
 import styled from "styled-components";
+import { useMemo } from "react";
+import { useAppSelector } from "../../hooks/redux";
+import { Alert, Snackbar } from "@mui/material";
 
 type RegisterFormProps = {
   setActiveMenu: React.Dispatch<React.SetStateAction<string>>;
 };
 
 const RegisterForm = ({ setActiveMenu }: RegisterFormProps) => {
-
+  const { status, errorMessage } = useAppSelector(state => state.auth);
   const dispatch = useAppDispatch();
 
   // TODO: Add validations
@@ -21,15 +24,32 @@ const RegisterForm = ({ setActiveMenu }: RegisterFormProps) => {
     password: "",
   });
 
+  const isAuthenticating = useMemo(() => status === "checking", [status]);
+
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault()
+    event.preventDefault();
     dispatch(startCreatingUserWithEmailPassword(formState));
   };
 
   return (
     <StyledRegister>
-      <div className="link-login" onClick={() => setActiveMenu("login")}>{'<'}go to login</div>
+      <div
+        className="link-login"
+        onClick={() => setActiveMenu("login")}>
+        {"<"}go to login
+      </div>
       <h1>Sign Up</h1>
+
+      <Snackbar
+        open={!!errorMessage}
+        autoHideDuration={6000}>
+        <Alert
+          severity="error"
+          sx={{ width: "100%" }}>
+          {errorMessage}
+        </Alert>
+      </Snackbar>
+
       <form
         className="form"
         onSubmit={handleSubmit}>
@@ -54,7 +74,9 @@ const RegisterForm = ({ setActiveMenu }: RegisterFormProps) => {
           value={password}
           onChange={onInputChange}
         />
-        <Button type="submit" >
+        <Button
+          type="submit"
+          disabled={isAuthenticating}>
           <span>Sign up</span>
         </Button>
       </form>
@@ -69,7 +91,7 @@ const StyledRegister = styled.section`
   flex-direction: column;
   place-content: center;
 
-  .link-login{
+  .link-login {
     cursor: pointer;
     color: ${props => props.theme.colors.variant3};
   }

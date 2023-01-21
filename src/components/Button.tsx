@@ -3,16 +3,18 @@ import styled from "styled-components";
 type ButtonProps = {
   children: JSX.Element | JSX.Element[],
   className?: string,
-  type?:  "button" | "submit" | "reset" | undefined
+  type?:  "button" | "submit" | "reset" | undefined,
+  disabled?: boolean,
   onClick?: ()=>void
 };
 
-const Button = ({ children, className, type, onClick }: ButtonProps) => {
+const Button = ({ children, className, type, disabled, onClick }: ButtonProps) => {
   let classN = `button ${className}`;
   return (
-    <StyledButton className={classN} type={type} onClick={onClick}>
+    <StyledButton className={classN} type={type} onClick={onClick} disabled={disabled}>
       {children}
     </StyledButton>
+    
   );
 };
 

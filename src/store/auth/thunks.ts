@@ -41,14 +41,6 @@ export const startCreatingUserWithEmailPassword = ({email, password, displayName
     }
 }
 
-
-// export const startCreatingUserWithEmailPassword = ({email, password, displayName}:any)=>{
-//     return async(dispatch) =>{
-
-
-//     }
-// }
-
 export const startLoginWithEmailPassword = ({email, password}:any): ThunkAction<void, RootState, unknown, AnyAction> => {
     return async (dispatch, getState) => {
 

@@ -46,8 +46,10 @@ const NavBar = ({ toggleDrawer }: NavBarProps) => {
 
             <Usermenu />
           </>
+        ) : status === "checking" ? (
+          <></>
         ) : (
-          <SignupModal/>
+          <SignupModal />
         )}
         {/* <FiUser className="icon" /> */}
       </div>

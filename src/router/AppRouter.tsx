@@ -8,7 +8,7 @@ const AppRouter = () => {
   const {status} = useCheckAuth();
     
 
-  if( status === 'checking' ) return <h1>loading...</h1>
+  // if( status === 'checking' ) return <></>
 
 
   return (

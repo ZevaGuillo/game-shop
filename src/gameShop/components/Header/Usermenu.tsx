@@ -4,13 +4,7 @@ import Avatar from "@mui/material/Avatar";
 import { useState } from "react";
 import UserDropdown from "./UserDropdown";
 import { useAppSelector } from "@/hooks/redux";
-import { deepPurple } from "@mui/material/colors";
 
-function stringAvatar(name: string) {
-  return {
-    children: `${name.split(" ")[0][0]}${name.split(" ")[1][0]}`,
-  };
-}
 
 const Usermenu = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -24,19 +18,11 @@ const Usermenu = () => {
         onClick={() => {
           setIsOpen(!isOpen);
         }}>
-        {!!photoURL ? (
-          <Avatar
-            sx={{ width: 37, height: 37 }}
-            alt="username"
-            src={photoURL}
-          />
-        ) : (
-          <Avatar
-            sx={{ width: 37, height: 37, bgcolor: deepPurple[500] }}
-            alt="username"
-            {...stringAvatar(displayName || "")}
-          />
-        )}
+        <Avatar
+          sx={{ width: 37, height: 37, bgcolor: '#7D52D9'}}
+          alt={displayName || ""}
+          src={photoURL || ""}
+        />
       </IconButton>
 
       {isOpen && <UserDropdown setIsOpen={() => setIsOpen(!isOpen)} />}

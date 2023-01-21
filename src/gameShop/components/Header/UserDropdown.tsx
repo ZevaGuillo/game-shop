@@ -8,12 +8,16 @@ import { useState, useRef, useEffect } from "react";
 import { CSSTransition } from "react-transition-group";
 import styled from "styled-components";
 import { useOnClickOutside } from "../../../hooks/useOnClickOutside";
+import { useAppSelector } from "../../../hooks/redux";
+import Avatar from "@mui/material/Avatar";
 
 type UserDropdownProps = {
   setIsOpen: () => void;
 };
 
 const UserDropdown = ({ setIsOpen }: UserDropdownProps) => {
+  const { displayName, photoURL } = useAppSelector(state => state.auth);
+
   const dropdownRef = useRef<HTMLInputElement>(null);
 
   const dispatch = useAppDispatch();
@@ -29,18 +33,25 @@ const UserDropdown = ({ setIsOpen }: UserDropdownProps) => {
       className="dropdown"
       ref={dropdownRef}>
       <section className="menu">
-        <div>
-          <p>Guillermo</p>
+        <div className="option">
+          <div className="name">
+            <Avatar
+              sx={{ width: 37, height: 37, bgcolor: "#7D52D9" }}
+              alt={displayName || ""}
+              src={photoURL || ""}
+            />
+            <h2>{displayName}</h2>
+          </div>
+          <div className="darkmode">
+            <h3>Dark Mode</h3>
+            <ToggleSwitch />
+          </div>
         </div>
-        <div>
-          <p>Dark Mode</p>
-          <ToggleSwitch />
-        </div>
-        <div>
-          <Button onClick={() => onLogout()}>
-            <span>Logout</span>
-          </Button>
-        </div>
+        <Button
+          className="btn-logout"
+          onClick={() => onLogout()}>
+          <span>Logout</span>
+        </Button>
       </section>
     </StyledDropdown>
   );
@@ -69,8 +80,23 @@ const StyledDropdown = styled.div`
 
   .menu {
     width: 100%;
+    .option {
+      
+      .darkmode, .name {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+      } 
+      h3 {
+        font-weight: normal;
+      }
+    }
   }
-
+  .btn-logout {
+    width: 100%;
+  }
+  
   .menu-item {
     height: 50px;
     display: flex;
@@ -91,8 +117,6 @@ const StyledDropdown = styled.div`
   .menu-item:hover {
     background-color: #525357;
   }
-
-
 `;
 
 export default UserDropdown;
