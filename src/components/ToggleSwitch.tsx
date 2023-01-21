@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import {  useAppDispatch } from '../hooks/redux';
-import { setDarkMode } from "@/store/slices/gameShop/gameShopSlice";
+import { setDarkMode } from "@/store/gameShop/gameShopSlice";
 
 const ToggleSwitch = () => {
 
