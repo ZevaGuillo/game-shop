@@ -7,6 +7,9 @@ export interface GameType{
     genders?: {
         name: string
     }[],
+    platforms: {
+        name: string
+    }[],
     price?:number,
     description?: string
 }

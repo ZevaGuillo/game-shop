@@ -61,7 +61,7 @@ const StyledNavBar = styled.nav.attrs(props => ({
   className: props.className,
 }))`
   z-index: 9991;
-  position: relative;
+  position: fixed;
   top: 0;
   background-color: ${props => props.theme.colors.bgColor};
   height: 3rem;
@@ -111,6 +111,8 @@ const StyledNavBar = styled.nav.attrs(props => ({
     max-height: 5rem;
     padding-top: 1rem;
     padding-bottom: 1rem;
+    background-color: ${(props) => props.theme.colors.bgColorOpacity};
+    backdrop-filter: blur(10px);
     .logo-header {
       flex: none;
       .logo-ico {

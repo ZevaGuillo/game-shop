@@ -21,6 +21,7 @@ const SearchInput = () => {
 
 const StyledSearchInput = styled.form`
   display: flex;
+  background-color: transparent;
 
   .input {
     flex: 1;
@@ -30,7 +31,7 @@ const StyledSearchInput = styled.form`
     color: ${(props) => props.theme.colors.text};
     font-size: 15px;
     border: none;
-    background-color: ${(props) => props.theme.colors.variant};
+    background-color: ${(props) => props.theme.colors.bgColorOpacity};
   }
 
   .button--submit {

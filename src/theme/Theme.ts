@@ -6,7 +6,8 @@ const colors = {
 
   //theme
   bgColor: '#e0e0e0',
-  bgColorOpacity: '#e0e0e0f6',
+  bgColorOpacity: '#e0e0e0c5',
+  bgColorOpacity2: '#e0e0e088',
   negative: '#1E1E1E',
   text: 'rgba(30,30,30,0.7)',
   variant: '#d6d6d6',
@@ -55,7 +56,8 @@ const darkTheme: StyleTheme = {
     ...theme.colors,
 
     bgColor: '#1E1E1E',
-    bgColorOpacity: '#1e1e1ef6',
+    bgColorOpacity: '#1e1e1ec5',
+    bgColorOpacity2: '#1e1e1e58',
     negative: '#e0e0e0',
     text: 'rgba(255,255,255,0.7)',
     variant: '#2a2a2a',
