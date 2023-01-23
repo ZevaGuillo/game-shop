@@ -34,6 +34,11 @@ export default{
             type: 'number'
         },
         {
+            title: 'Description',
+            name: 'description',
+            type: 'text'
+        },
+        {
             name: 'genders',
             title: 'Genders',
             type: 'array',
