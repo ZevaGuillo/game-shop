@@ -17,7 +17,7 @@ const CardGame = ({ game }: CardProps) => {
           width={100}
           height={200}
         />
-        <Image url={game.backgroundUrl} className="cover" alt={game.name} />
+        <Image url={game.coverUrl} className="cover" alt={game.name} />
       </div>
       <section className="content">
         <p>{game.name}</p>

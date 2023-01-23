@@ -16,6 +16,8 @@ const GamePage = () => {
         const data = await getGamesBySlug(params.id);
         setGame(data);
         setLoading(false);
+        console.log(data);
+        
       } catch (error) {
         console.log(error);
         navigate('/catalog')

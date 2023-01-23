@@ -5,7 +5,7 @@ const query = `*[_type == "game"] {
     _id,
     name,
     "slug": slug.current,
-    "backgroundUrl": coverPage.asset->url,
+    "coverUrl": coverPage.asset->url,
     genders[]->{
       name
     },
@@ -32,10 +32,10 @@ export const getGamesWithFilter = async (): Promise<GameType[]> => {
     _id,
     name,
     "slug": slug.current,
-    "backgroundUrl": coverPage.asset->url,
+    "coverUrl": coverPage.asset->url,
     genders[]->{
       name
-    }
+    },
     "discount":
     *[_type == "discounts" && references(^._id)]{
       title,
@@ -68,14 +68,27 @@ export const getGamesWithFilter = async (): Promise<GameType[]> => {
 //   name,
 // }`);
 
-export const getGamesBySlug = async (slug:string = ''): Promise<GameType> => {
+export const getGamesBySlug = async (slug: string = ''): Promise<GameType> => {
   const results = await client.fetch(`
   *[_type == "game" && slug.current == "${slug}"] {
     _id,
     name,
+    price,
     "slug": slug.current,
-
+    "coverUrl": coverPage.asset->url,
+    "backgroundUrl": image.asset->url,
+    genders[]->{
+      name
+    },
+    "discount":
+    *[_type == "discounts" && references(^._id)]{
+      title,
+      discount
+    },
+    platforms[]->{
+      name
+    }
   }`);
-  
+
   return results[0];
 };
