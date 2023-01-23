@@ -14,8 +14,8 @@ const CardGame = ({ game }: CardProps) => {
           className="blur"
           src={game.backgroundUrl}
           alt={game.name}
-          width={190}
-          height={208}
+          width={100}
+          height={200}
         />
         <Image url={game.backgroundUrl} className="cover" alt={game.name} />
       </div>
@@ -28,8 +28,8 @@ const CardGame = ({ game }: CardProps) => {
 
 const StyledCard = styled.div`
   margin: 0 auto;
-  width: 12rem;
-  height: 17rem;
+  width: 100%;
+  height: 100%;
   border-radius: 8px;
   overflow: hidden;
 
