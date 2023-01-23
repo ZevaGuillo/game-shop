@@ -6,6 +6,7 @@ const query = `*[_type == "game"] {
     name,
     "slug": slug.current,
     "coverUrl": coverPage.asset->url,
+    "backgroundUrl": image.asset->url,
     genders[]->{
       name
     },
@@ -33,6 +34,7 @@ export const getGamesWithFilter = async (): Promise<GameType[]> => {
     name,
     "slug": slug.current,
     "coverUrl": coverPage.asset->url,
+    "backgroundUrl": image.asset->url,
     genders[]->{
       name
     },
@@ -74,6 +76,7 @@ export const getGamesBySlug = async (slug: string = ''): Promise<GameType> => {
     _id,
     name,
     price,
+    description,
     "slug": slug.current,
     "coverUrl": coverPage.asset->url,
     "backgroundUrl": image.asset->url,

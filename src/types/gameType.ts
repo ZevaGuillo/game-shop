@@ -4,7 +4,11 @@ export interface GameType{
     coverUrl: string,
     slug?: string,
     featured?: boolean,
-    gender?: string[]
+    genders?: {
+        name: string
+    }[],
+    price?:number,
+    description?: string
 }
 
 export type IGamesList = {

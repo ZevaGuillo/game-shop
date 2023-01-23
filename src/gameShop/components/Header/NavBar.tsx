@@ -62,6 +62,7 @@ const StyledNavBar = styled.nav.attrs(props => ({
 }))`
   z-index: 9991;
   position: relative;
+  top: 0;
   background-color: ${props => props.theme.colors.bgColor};
   height: 3rem;
   width: 100vw;

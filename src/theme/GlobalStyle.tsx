@@ -34,6 +34,11 @@ export const GlobalStyle = createGlobalStyle`
     h1,h2,h3,h4,p,span{
       color: ${(props: GlobalProps) => props.theme.colors.negative};
     }
+    p{
+      font-size: 1rem;
+      margin-block-start: 0;
+      margin-block-end: 0;
+    }
 
     ul{
       list-style: none;

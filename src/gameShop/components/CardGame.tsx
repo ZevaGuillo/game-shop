@@ -4,15 +4,18 @@ import styled from "styled-components";
 
 type CardProps = {
   game: GameType;
+  className?: string
 };
 
-const CardGame = ({ game }: CardProps) => {
+const CardGame = ({ game, className='' }: CardProps) => {
+  console.log(game);
+  
   return (
-    <StyledCard className="glass">
+    <StyledCard className={`glass ${className}`}>
       <div className="image">
         <img
           className="blur"
-          src={game.backgroundUrl}
+          src={game.coverUrl}
           alt={game.name}
           width={100}
           height={200}
@@ -20,7 +23,7 @@ const CardGame = ({ game }: CardProps) => {
         <Image url={game.coverUrl} className="cover" alt={game.name} />
       </div>
       <section className="content">
-        <p>{game.name}</p>
+        <p className="title-game">{game.name}</p>
       </section>
     </StyledCard>
   );
@@ -58,9 +61,14 @@ const StyledCard = styled.div`
   }
 
   .content {
-    padding: 0rem 1rem;
-    display: flex;
-    justify-content: center;
+    padding: 1rem;
+    width: 100%;
+    display: grid;
+    place-content: center;
+  }
+  .title-game{
+    display: inline-block;
+    width: 100%;
   }
 `;
 
