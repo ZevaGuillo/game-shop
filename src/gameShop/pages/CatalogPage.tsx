@@ -4,28 +4,27 @@ import { useEffect } from "react";
 import styled from "styled-components";
 import FilterSideBar from "../components/catalog/FilterSideBar";
 import GameList from "../views/GameList";
-import FilterNavBar from '../components/catalog/FilterNavBar';
+import FilterNavBar from "../components/catalog/FilterNavBar";
 
 const CatalogPage = () => {
   const params = useParams();
   const navigate = useNavigate();
-  const { genders } = useAppSelector((state) => state.gameShop);
+  const { genders } = useAppSelector(state => state.gameShop);
   let catalog = params.gender ? params.gender : "All";
 
   useEffect(() => {});
 
   return (
-    <StyledCatalogPage>
+    <StyledCatalogPage className="container padding-nav">
       <aside className="categories-sidebar">
-        <FilterSideBar/>
+        <FilterSideBar />
       </aside>
       <section className="main-section">
         <nav className="navbar">
-          <FilterNavBar/>
+          <FilterNavBar />
         </nav>
         <section className="games-list">
-          <GameList/>
-          
+          <GameList />
         </section>
       </section>
     </StyledCatalogPage>
@@ -33,13 +32,11 @@ const CatalogPage = () => {
 };
 
 const StyledCatalogPage = styled.main`
-  padding: 2rem 7%;
   display: flex;
   gap: 2rem;
 
   .categories-sidebar {
-    width: 20%;
-    min-height: 300px;
+    display: none;
   }
 
   .main-section {
@@ -52,6 +49,14 @@ const StyledCatalogPage = styled.main`
     .games-list {
       width: 100%;
       min-height: 100%;
+    }
+  }
+
+  @media (min-width: 900px) {
+    .categories-sidebar {
+      display: block;
+      width: 20%;
+      min-height: 300px;
     }
   }
 `;

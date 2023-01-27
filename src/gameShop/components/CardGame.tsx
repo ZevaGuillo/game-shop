@@ -4,12 +4,12 @@ import styled from "styled-components";
 
 type CardProps = {
   game: GameType;
-  className?: string
+  className?: string;
 };
 
-const CardGame = ({ game, className='' }: CardProps) => {
+const CardGame = ({ game, className = "" }: CardProps) => {
   console.log(game);
-  
+
   return (
     <StyledCard className={`glass ${className}`}>
       <div className="image">
@@ -20,11 +20,16 @@ const CardGame = ({ game, className='' }: CardProps) => {
           width={100}
           height={200}
         />
-        <Image url={game.coverUrl} className="cover" alt={game.name} />
+        <Image
+          url={game.coverUrl}
+          className="cover"
+          alt={game.name}
+        />
       </div>
       <section className="content">
         <p className="title-game">{game.name}</p>
       </section>
+      <div className="price">${game.price}</div>
     </StyledCard>
   );
 };
@@ -35,11 +40,14 @@ const StyledCard = styled.div`
   height: 100%;
   border-radius: 8px;
   overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction:column;
 
   .image {
     position: relative;
     width: 100%;
-    height: 13rem;
+    height: 75%;
 
     .blur {
       position: absolute;
@@ -61,14 +69,44 @@ const StyledCard = styled.div`
   }
 
   .content {
-    padding: 1rem;
+    flex: 1;
+    padding: 0.2rem 1rem;
     width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+  }
+  .title-game {
+    font-size: 1em;
+    width: 100%;
+    height: 100%;
     display: grid;
     place-content: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
-  .title-game{
-    display: inline-block;
-    width: 100%;
+
+  .price {
+    position: absolute;
+    top: 0;
+    padding: 0.2rem;
+    min-width: 15%;
+    aspect-ratio: 1/1;
+    background-color: #1e1e1ecc;
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
+    border-radius: 0 0 8px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: ${props => props.theme.colors.white};
+  }
+
+  @media (min-width: 900px) {
+    .content {
+      padding: 1rem;
+    }
   }
 `;
 

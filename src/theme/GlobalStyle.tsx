@@ -8,22 +8,42 @@ type GlobalProps = {
 };
 
 export const GlobalStyle = createGlobalStyle`
-     ${normalize}
-     
-     * {
-        box-sizing: border-box;
-        line-height: normal;
-     }  
-       
-     body {
+    ${normalize}
+
+    :root{
+        --dark:  ${(props: GlobalProps) => props.theme.colors.bgColor};
+        --thumb-bg: ${(props: GlobalProps) => props.theme.colors.btnHover};
+    }
+    ::-webkit-scrollbar {
+        width: 5px;
+        height: 5px;
+    }
+    ::-webkit-scrollbar-thumb {
+        background: var(--thumb-bg);
+        border-radius: 2px;
+    }
+    ::-webkit-scrollbar-thumb:active,
+    ::-webkit-scrollbar-thumb:hover {
+        background: var(--dark);
+    }
+    ::-webkit-scrollbar-track {
+        background: #ffffff15;
+    }
+
+    * {
+      box-sizing: border-box;
+      line-height: normal;
+    }  
+
+    body {
       background-color: ${(props: GlobalProps) => props.theme.colors.bgColor};
-        height: 100vh;
-        overflow-x: hidden;
-        -webkit-text-size-adjust: 100%;
-        -webkit-font-smoothing: antialiased;
-        font-family: 'Outfit', sans-serif;
-        font-size: 14px;
-        line-height: 17.64px;
+      height: 100vh;
+      overflow-x: hidden;
+      -webkit-text-size-adjust: 100%;
+      -webkit-font-smoothing: antialiased;
+      font-family: 'Outfit', sans-serif;
+      font-size: 14px;
+      line-height: 17.64px;
 
     }
 
@@ -110,6 +130,13 @@ export const GlobalStyle = createGlobalStyle`
       background: ${(props: GlobalProps) => props.theme.colors.cardGradient}; 
       box-shadow: ${(props: GlobalProps) => props.theme.colors.cardShadow}; 
 
+    }
+
+    .padding-nav{
+      padding-top: 3.5rem ;
+      @media (min-width: 900px) {
+          padding-top: 6rem;
+      }
     }
 
 

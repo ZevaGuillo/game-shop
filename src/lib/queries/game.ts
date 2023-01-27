@@ -4,6 +4,7 @@ import client from "../sanity";
 const query = `*[_type == "game"] {
     _id,
     name,
+    price,
     "slug": slug.current,
     "coverUrl": coverPage.asset->url,
     "backgroundUrl": image.asset->url,

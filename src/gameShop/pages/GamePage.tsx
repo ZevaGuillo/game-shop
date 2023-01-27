@@ -27,7 +27,12 @@ const GamePage = () => {
 
   if (loading) return <h1>Loading...</h1>;
 
-  return <div>{game && <HeroGame game={game} />}</div>;
+  return (
+    <div>
+      {game && <HeroGame game={game} />}
+      <div>hola</div>
+    </div>
+  );
 };
 
 export default GamePage;

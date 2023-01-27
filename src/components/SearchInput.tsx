@@ -31,7 +31,7 @@ const StyledSearchInput = styled.form`
     color: ${(props) => props.theme.colors.text};
     font-size: 15px;
     border: none;
-    background-color: ${(props) => props.theme.colors.bgColorOpacity};
+    background-color: ${(props) => props.theme.colors.search};
   }
 
   .button--submit {

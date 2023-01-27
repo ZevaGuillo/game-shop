@@ -14,7 +14,7 @@ const GameShopPage = ({gender, featured}:GameShopPage) => {
   if (!featured || !gender) return <h1>LOADING</h1>;
 
   return (
-    <StyledGameShop className="container">
+    <StyledGameShop className="container padding-nav">
       <section className="slide-section">
         <Slidershow featured={featured as FeaturedType[]} />
       </section>

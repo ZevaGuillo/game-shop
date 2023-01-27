@@ -17,9 +17,8 @@ const HeroGame = ({ game }: HeroGameProps) => {
 
   return (
     <StyledHero
-      background={game?.backgroundUrl}
-      className="container bg-blur">
-      <section className="content-game">
+      background={game?.backgroundUrl}>
+      <section className="container content-game">
         <div className="info">
           <h1>{game?.name}</h1>
           <p>{game?.description}</p>
@@ -99,16 +98,16 @@ type StyledType = {
 };
 
 const StyledHero = styled.article<StyledType>`
-  min-height: 100vh;
-  padding-top: 5rem;
+  
+  height: fit-content;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   z-index: 100;
 
   &::after {
     z-index: -2;
     width: 100%;
-    height: 100%;
+    min-height: 100%;
     content: "";
     top: 0;
     left: 0;
@@ -117,23 +116,16 @@ const StyledHero = styled.article<StyledType>`
     background-repeat: no-repeat;
     background-size: cover;
   }
-  &::before {
-    z-index: -1;
-    width: 100vw;
-    height: 100vh;
-    content: "";
-    top: 0;
-    left: 0;
-    position: absolute;
-    clip-path: polygon(0 0, 60% 0%, 45% 100%, 0% 100%);
+
+  .content-game {
+    padding-top: 4rem;
+    padding-bottom: 2rem;
+    width: 100%;
     background-color: ${props => props.theme.colors.bgColorOpacity};
     backdrop-filter: blur(30px);
     -webkit-backdrop-filter: blur(30px);
-  }
-
-  .content-game {
-    width: 50%;
     h1 {
+      font-size: 2em;
       margin-block-start: 0em;
       margin-block-end: 0em;
     }
@@ -141,7 +133,7 @@ const StyledHero = styled.article<StyledType>`
     .info {
       display: flex;
       flex-direction: column;
-      gap: 1rem;
+      gap: 2rem;
       .genders {
         display: flex;
         gap: 0.5rem;
@@ -155,27 +147,72 @@ const StyledHero = styled.article<StyledType>`
           margin: 0;
           z-index: 1;
           box-shadow: none;
-          max-width: 12rem;
-          max-height: 18rem;
+          width: 12rem;
+          height: 16rem;
+          .price{
+            display: none;
+          }
         }
         .game-options {
           position: absolute;
           z-index: 0;
-          width: calc(100% + 20rem);
+          width: 10%;
           min-height: 50%;
+          width: calc(100% + 60rem);
+          padding-left: calc(+10rem + 14rem);
           top: 50%;
           transform: translateY(-50%);
           left: -10rem;
-          padding-left: calc(+10rem + 14rem);
           clip-path: polygon(0 0, 69% 0%, 65% 100%, 0% 100%);
-          /* background-color: ${props =>
-            props.theme.colors.bgColorOpacity2}; */
           background: linear-gradient(
             109.6deg,
             ${props => props.theme.colors.bgColorOpacity} 11.2%,
             ${props => props.theme.colors.bgColorOpacity2} 78.9%
           );
           backdrop-filter: blur(40px);
+        }
+      }
+    }
+  }
+
+  @media (min-width: 900px) {
+    min-height: 100vh;
+    align-items: center;
+
+    &::before {
+      z-index: -1;
+      width: 100vw;
+      height: 100vh;
+      content: "";
+      top: 0;
+      left: 0;
+      position: absolute;
+      clip-path: polygon(0 0, 60% 0%, 45% 100%, 0% 100%);
+      background-color: ${props => props.theme.colors.bgColorOpacity};
+      backdrop-filter: blur(30px);
+      -webkit-backdrop-filter: blur(30px);
+    }
+
+    .content-game {
+      padding-top: 2rem;
+      padding-bottom: 0;
+      display: flex;
+      background-color: blue;
+      height: max-content;
+      align-items: center;
+      width: 50%;
+      background-color: transparent;
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+
+      h1 {
+        font-size: 3.75em;
+      }
+      .info {
+        gap: 1rem;
+        .game .game-options {
+          width: calc(100% + 20rem);
+          padding-left: calc(+10rem + 14rem);
         }
       }
     }

@@ -14,29 +14,32 @@ const GameShopRoutes = () => {
   return (
     <StyledGameShop>
       <Header />
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <GameShopPage
+      <main className="router-main">
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <GameShopPage
               gender={gender as GenderType[]}
               featured={featured as FeaturedType[]}
+              />
+            }
             />
-          }
-        />
-        <Route path="/catalog/:gender" element={<CatalogPage />} />
-        <Route path="/catalog" element={<CatalogPage />} />
-        <Route path="/game/:id" element={<GamePage />} />
-        <Route path="/game" element={<Navigate to="/catalog" />} />
+          <Route path="/catalog/:gender" element={<CatalogPage />} />
+          <Route path="/catalog" element={<CatalogPage />} />
+          <Route path="/game/:id" element={<GamePage />} />
+          <Route path="/game" element={<Navigate to="/catalog" />} />
 
-        <Route path="/*" element={<Navigate to="/" />} />
-      </Routes>
+          <Route path="/*" element={<Navigate to="/" />} />
+        </Routes>
+      </main>
     </StyledGameShop>
   );
 };
 
 const StyledGameShop = styled.main`
   min-height: 100vh;
+
 `;
 
 export default GameShopRoutes;

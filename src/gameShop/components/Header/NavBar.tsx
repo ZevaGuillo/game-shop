@@ -74,7 +74,6 @@ const StyledNavBar = styled.nav.attrs(props => ({
   align-items: center;
   gap: 1rem;
   border-bottom: 1px solid ${props => props.theme.colors.variant};
-  transition: all 0.25s ease;
 
   .logo-header {
     height: 100%;
