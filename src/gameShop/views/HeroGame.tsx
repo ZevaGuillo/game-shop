@@ -42,7 +42,6 @@ const HeroGame = ({ game }: HeroGameProps) => {
                 <h3>${game.price}</h3>
               </section>
               <section className="platforms">
-                {/* <h1>{game.platforms[0].name}</h1> */}
                 <Select
                   sx={{
                     color: "white",
@@ -72,10 +71,6 @@ const HeroGame = ({ game }: HeroGameProps) => {
                   onChange={handleChange}
                   displayEmpty
                   inputProps={{ "aria-label": "Without label" }}>
-                  {/* TODO: validar plataforma */}
-                  {/* <MenuItem value="">
-                    <em>Platform</em>
-                  </MenuItem> */}
                   {game.platforms.map(platform => (
                     <MenuItem
                       key={platform.name}
@@ -149,9 +144,10 @@ const StyledHero = styled.article<StyledType>`
           box-shadow: none;
           width: 12rem;
           height: 16rem;
-          .price{
+          .price, .favorite{
             display: none;
           }
+          
         }
         .game-options {
           position: absolute;

@@ -1,6 +1,10 @@
 import Image from "@/components/Image";
 import { GameType } from "@/types/gameType";
 import styled from "styled-components";
+import { MdFavoriteBorder, MdFavorite } from "react-icons/md";
+import { useAppDispatch } from '../../hooks/redux';
+import { startAddFavorite } from "@/store/gameShop/thunks";
+
 
 type CardProps = {
   game: GameType;
@@ -8,7 +12,13 @@ type CardProps = {
 };
 
 const CardGame = ({ game, className = "" }: CardProps) => {
-  console.log(game);
+  
+  const dispatch = useAppDispatch();
+
+  const onAddFavorite= (e: React.MouseEvent<HTMLDivElement, MouseEvent>)=>{
+    e.preventDefault();
+    dispatch(startAddFavorite(game));
+  }
 
   return (
     <StyledCard className={`glass ${className}`}>
@@ -30,6 +40,8 @@ const CardGame = ({ game, className = "" }: CardProps) => {
         <p className="title-game">{game.name}</p>
       </section>
       <div className="price">${game.price}</div>
+      <div className="favorite" onClick={onAddFavorite}><MdFavorite/></div>
+      
     </StyledCard>
   );
 };
@@ -101,6 +113,13 @@ const StyledCard = styled.div`
     justify-content: center;
     align-items: center;
     color: ${props => props.theme.colors.white};
+  }
+
+  .favorite{
+    position: absolute;
+    top: .2rem;
+    right: .2rem;
+    font-size: 1.5rem;
   }
 
   @media (min-width: 900px) {

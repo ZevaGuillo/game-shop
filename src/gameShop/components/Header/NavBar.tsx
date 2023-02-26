@@ -9,6 +9,7 @@ import { Link } from "react-router-dom";
 import { useAppSelector } from "@/hooks/redux";
 import Button from "@/components/Button";
 import SignupModal from "./SignupModal";
+import FavoriteMenu from './FavoriteMenu';
 
 type NavBarProps = {
   toggleDrawer: () => void;
@@ -40,7 +41,8 @@ const NavBar = ({ toggleDrawer }: NavBarProps) => {
 
         {status === "authenticated" ? (
           <>
-            <FiHeart className="icon favorite" />
+            <FavoriteMenu/>
+            {/* <FiHeart className="icon favorite" /> */}
 
             <FiShoppingCart className="icon" />
 

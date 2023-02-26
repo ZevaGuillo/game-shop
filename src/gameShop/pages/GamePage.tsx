@@ -29,8 +29,12 @@ const GamePage = () => {
 
   return (
     <div>
-      {game && <HeroGame game={game} />}
-      <div>hola</div>
+      {game && (
+        <>
+          <HeroGame game={game} />
+          
+        </>
+      )}
     </div>
   );
 };
