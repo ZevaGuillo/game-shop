@@ -1,4 +1,5 @@
 export interface GameType{
+    id:string,
     name: string,
     backgroundUrl: string,
     coverUrl: string,

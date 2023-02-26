@@ -9,7 +9,7 @@ export const loadFavorites = async(uid = '')=> {
     const docs = await getDocs(collectionRef);
 
     const games:GameType[] = []
-    docs.forEach(doc => games.push({ ...doc.data() as GameType}))
+    docs.forEach(doc => games.push({ ...doc.data() as GameType, id: doc.id}))
     
     return games
 

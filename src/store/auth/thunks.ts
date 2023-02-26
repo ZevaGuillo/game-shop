@@ -1,6 +1,7 @@
 import { loginWithEmailPassword, logoutFirebase, registerUserWithEmailPassword, singInWithGoogle } from "@/firebase/providers";
 import { AnyAction } from "@reduxjs/toolkit";
 import { ThunkAction } from "redux-thunk";
+import { clearUser } from "../gameShop/gameShopSlice";
 import { RootState } from "../store";
 import { checkingCredentials, login, logout } from "./authSlice";
 
@@ -61,6 +62,7 @@ export const startLogout = (): ThunkAction<void, RootState, unknown, AnyAction> 
         await logoutFirebase();
         // dispatch(clearNotesLogout())
         dispatch( logout({}) );
+        dispatch(clearUser());
 
     }
 }

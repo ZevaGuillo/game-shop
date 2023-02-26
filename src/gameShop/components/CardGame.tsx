@@ -2,8 +2,9 @@ import Image from "@/components/Image";
 import { GameType } from "@/types/gameType";
 import styled from "styled-components";
 import { MdFavoriteBorder, MdFavorite } from "react-icons/md";
-import { useAppDispatch } from '../../hooks/redux';
-import { startAddFavorite } from "@/store/gameShop/thunks";
+import { useAppDispatch, useAppSelector } from '../../hooks/redux';
+import { startAddFavorite, startRemoveFavorite } from "@/store/gameShop/thunks";
+import { useState, useEffect } from 'react';
 
 
 type CardProps = {
@@ -13,12 +14,30 @@ type CardProps = {
 
 const CardGame = ({ game, className = "" }: CardProps) => {
   
+  const [fav, setFav] = useState(false);
+
   const dispatch = useAppDispatch();
+  const {favorites} = useAppSelector(state => state.gameShop)
 
   const onAddFavorite= (e: React.MouseEvent<HTMLDivElement, MouseEvent>)=>{
     e.preventDefault();
-    dispatch(startAddFavorite(game));
+
+    if(!fav){
+      //* set favorite
+      setFav(true);
+      dispatch(startAddFavorite(game));
+    }else{
+      setFav(false);
+      dispatch(startRemoveFavorite(game));
+    }
+
   }
+
+  useEffect(()=>{
+    // @ts-expect-error
+    const aux = favorites.some(g => g._id === game._id) 
+    setFav(aux);
+  })
 
   return (
     <StyledCard className={`glass ${className}`}>
@@ -40,7 +59,7 @@ const CardGame = ({ game, className = "" }: CardProps) => {
         <p className="title-game">{game.name}</p>
       </section>
       <div className="price">${game.price}</div>
-      <div className="favorite" onClick={onAddFavorite}><MdFavorite/></div>
+      <div className={`favorite ${fav?'fav':''}`} onClick={onAddFavorite}><MdFavorite/></div>
       
     </StyledCard>
   );
@@ -120,6 +139,9 @@ const StyledCard = styled.div`
     top: .2rem;
     right: .2rem;
     font-size: 1.5rem;
+  }
+  .favorite.fav{
+    color: red;
   }
 
   @media (min-width: 900px) {
