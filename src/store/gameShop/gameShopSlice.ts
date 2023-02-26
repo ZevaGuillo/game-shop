@@ -37,8 +37,11 @@ export const gameShopSlice = createSlice({
     setIsLoading: (state, action:PayloadAction<boolean>)=>{
       state.isLoading = action.payload;
     },
-    addfavorite: (state,  action:PayloadAction<GameType>)=>{
+    addNewFavorite: (state,  action:PayloadAction<GameType>)=>{
       state.favorites.push(action.payload)
+    },
+    setFavorites: (state,  action:PayloadAction<GameType[]>)=>{
+      state.favorites = action.payload;
     },
     setDarkMode: (state) => {
       state.darkMode = !state.darkMode
@@ -46,6 +49,6 @@ export const gameShopSlice = createSlice({
   },
 })
 
-export const { setGenders, setPlatforms, setIsLoading, addfavorite, setDarkMode } = gameShopSlice.actions
+export const { setGenders, setPlatforms, setIsLoading, addNewFavorite, setFavorites, setDarkMode } = gameShopSlice.actions
 
 export default gameShopSlice.reducer
