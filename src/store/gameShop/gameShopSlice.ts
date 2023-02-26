@@ -10,6 +10,8 @@ interface GamesState {
   isLoading: boolean,
   genders: string[],
   platforms: PlatformType[],
+  favorites: GameType[],
+  shoppingCart: GameType[],
   darkMode: boolean,
 }
 
@@ -17,6 +19,8 @@ const initialState: GamesState = {
   isLoading: false,
   genders: [],
   platforms: [],
+  favorites: [],
+  shoppingCart: [],
   darkMode: false,
 }
 
@@ -33,12 +37,15 @@ export const gameShopSlice = createSlice({
     setIsLoading: (state, action:PayloadAction<boolean>)=>{
       state.isLoading = action.payload;
     },
+    addfavorite: (state,  action:PayloadAction<GameType>)=>{
+      state.favorites.push(action.payload)
+    },
     setDarkMode: (state) => {
       state.darkMode = !state.darkMode
     }
   },
 })
 
-export const { setGenders, setPlatforms, setIsLoading, setDarkMode } = gameShopSlice.actions
+export const { setGenders, setPlatforms, setIsLoading, addfavorite, setDarkMode } = gameShopSlice.actions
 
 export default gameShopSlice.reducer
