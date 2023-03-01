@@ -10,6 +10,7 @@ import { useAppSelector } from "@/hooks/redux";
 import Button from "@/components/Button";
 import SignupModal from "./SignupModal";
 import FavoriteMenu from './FavoriteMenu';
+import ShoppingCartMenu from "./ShoppingCartMenu";
 
 type NavBarProps = {
   toggleDrawer: () => void;
@@ -44,8 +45,8 @@ const NavBar = ({ toggleDrawer }: NavBarProps) => {
             <FavoriteMenu/>
             {/* <FiHeart className="icon favorite" /> */}
 
-            <FiShoppingCart className="icon" />
-
+            <ShoppingCartMenu/>
+            
             <Usermenu />
           </>
         ) : status === "checking" ? (
