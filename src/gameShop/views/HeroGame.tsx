@@ -3,21 +3,21 @@ import styled from "styled-components";
 import CardGame from "../components/CardGame";
 import { Chip, MenuItem, Select, SelectChangeEvent } from "@mui/material";
 import { useState } from "react";
+import Button from "../../components/Button";
 
 type HeroGameProps = {
   game: GameType;
 };
 
 const HeroGame = ({ game }: HeroGameProps) => {
-  const [platform, setPlatform] = useState("");
+  const [platform, setPlatform] = useState(game.platforms[0].name || "");
 
   const handleChange = (event: SelectChangeEvent) => {
     setPlatform(event.target.value);
   };
 
   return (
-    <StyledHero
-      background={game?.backgroundUrl}>
+    <StyledHero background={game?.backgroundUrl}>
       <section className="container content-game">
         <div className="info">
           <h1>{game?.name}</h1>
@@ -37,10 +37,12 @@ const HeroGame = ({ game }: HeroGameProps) => {
                 className="card-cover"
               />
             )}
+
             <section className="game-options">
               <section className="price">
                 <h3>${game.price}</h3>
               </section>
+
               <section className="platforms">
                 <Select
                   sx={{
@@ -68,9 +70,8 @@ const HeroGame = ({ game }: HeroGameProps) => {
                     },
                   }}
                   value={platform}
-                  onChange={handleChange}
-                  displayEmpty
-                  inputProps={{ "aria-label": "Without label" }}>
+                  label={platform}
+                  onChange={handleChange}>
                   {game.platforms.map(platform => (
                     <MenuItem
                       key={platform.name}
@@ -80,6 +81,8 @@ const HeroGame = ({ game }: HeroGameProps) => {
                   ))}
                 </Select>
               </section>
+              
+              <Button className="buy-botton"><span>Buy</span></Button>
             </section>
           </div>
         </div>
@@ -93,7 +96,6 @@ type StyledType = {
 };
 
 const StyledHero = styled.article<StyledType>`
-  
   height: fit-content;
   display: flex;
   align-items: flex-start;
@@ -144,28 +146,16 @@ const StyledHero = styled.article<StyledType>`
           box-shadow: none;
           width: 12rem;
           height: 16rem;
-          .price, .favorite{
+          .price,
+          .favorite {
             display: none;
           }
-          
         }
         .game-options {
-          position: absolute;
-          z-index: 0;
-          width: 10%;
-          min-height: 50%;
-          width: calc(100% + 60rem);
-          padding-left: calc(+10rem + 14rem);
-          top: 50%;
-          transform: translateY(-50%);
-          left: -10rem;
-          clip-path: polygon(0 0, 69% 0%, 65% 100%, 0% 100%);
-          background: linear-gradient(
-            109.6deg,
-            ${props => props.theme.colors.bgColorOpacity} 11.2%,
-            ${props => props.theme.colors.bgColorOpacity2} 78.9%
-          );
-          backdrop-filter: blur(40px);
+          padding-left: 1rem;
+          .buy-botton{
+            margin: .5rem 0;
+          }
         }
       }
     }
@@ -207,6 +197,19 @@ const StyledHero = styled.article<StyledType>`
       .info {
         gap: 1rem;
         .game .game-options {
+          position: absolute;
+          z-index: 0;
+          min-height: 50%;
+          top: 50%;
+          transform: translateY(-50%);
+          left: -10rem;
+          clip-path: polygon(0 0, 69% 0%, 65% 100%, 0% 100%);
+          background: linear-gradient(
+            109.6deg,
+            ${props => props.theme.colors.bgColorOpacity} 11.2%,
+            ${props => props.theme.colors.bgColorOpacity2} 78.9%
+          );
+          backdrop-filter: blur(40px);
           width: calc(100% + 20rem);
           padding-left: calc(+10rem + 14rem);
         }
