@@ -4,6 +4,8 @@ import CardGame from "../components/CardGame";
 import { Chip, MenuItem, Select, SelectChangeEvent } from "@mui/material";
 import { useState } from "react";
 import Button from "../../components/Button";
+import { useAppDispatch } from '../../hooks/redux';
+import { startAddGame } from '../../store/gameShop/thunks';
 
 type HeroGameProps = {
   game: GameType;
@@ -11,10 +13,15 @@ type HeroGameProps = {
 
 const HeroGame = ({ game }: HeroGameProps) => {
   const [platform, setPlatform] = useState(game.platforms[0].name || "");
+  const dispatch = useAppDispatch();
 
   const handleChange = (event: SelectChangeEvent) => {
     setPlatform(event.target.value);
   };
+
+  const onAddGameShoppingCart = ()=>{
+    dispatch(startAddGame(game))
+  }
 
   return (
     <StyledHero background={game?.backgroundUrl}>
@@ -82,7 +89,7 @@ const HeroGame = ({ game }: HeroGameProps) => {
                 </Select>
               </section>
               
-              <Button className="buy-botton"><span>Buy</span></Button>
+              <Button type="button" className="buy-botton" onClick={onAddGameShoppingCart}><span>Buy</span></Button>
             </section>
           </div>
         </div>

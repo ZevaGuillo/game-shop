@@ -14,3 +14,15 @@ export const loadFavorites = async(uid = '')=> {
     return games
 
 }
+
+export const loadShoppingCart = async(uid = '')=> {
+    if( !uid ) throw new Error('El uid del usuario no existe');
+
+    const collectionRef = collection( FirebaseDB, `${uid}/gameshop/shoppingCart` );
+    const docs = await getDocs(collectionRef);
+
+    const games:GameType[] = []
+    docs.forEach(doc => games.push({ ...doc.data() as GameType, id: doc.id}))
+    
+    return games
+}
