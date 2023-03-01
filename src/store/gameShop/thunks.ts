@@ -5,7 +5,7 @@ import { RootState } from '@/store/store';
 import { GameType } from '@/types/gameType';
 import { collection, deleteDoc, doc, setDoc } from 'firebase/firestore/lite'
 import { FirebaseDB } from '@/firebase/config';
-import { loadFavorites } from '@/helpers/loadFirebase';
+import { loadFavorites, loadShoppingCart } from '@/helpers/loadFirebase';
 
 
 export const startAddFavorite = (game: GameType): ThunkAction<void, RootState, unknown, AnyAction> => {
@@ -94,7 +94,7 @@ export const startLoadingShoppingCart = (): ThunkAction<void, RootState, unknown
         
         if(!uid) throw new Error('El UID del usuario no existe');
 
-        const games = await loadFavorites(uid);
+        const games = await loadShoppingCart(uid);
 
         dispatch(setShoppingCart(games))
 
