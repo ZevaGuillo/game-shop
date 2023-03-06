@@ -8,12 +8,9 @@ import styled from "styled-components";
 import { useMemo } from "react";
 import { useAppSelector } from "../../hooks/redux";
 import { Alert, Snackbar } from "@mui/material";
+import { setActiveMenu } from "@/store/auth/authSlice";
 
-type RegisterFormProps = {
-  setActiveMenu: React.Dispatch<React.SetStateAction<string>>;
-};
-
-const RegisterForm = ({ setActiveMenu }: RegisterFormProps) => {
+const RegisterForm = () => {
   const { status, errorMessage } = useAppSelector(state => state.auth);
   const dispatch = useAppDispatch();
 
@@ -35,7 +32,7 @@ const RegisterForm = ({ setActiveMenu }: RegisterFormProps) => {
     <StyledRegister>
       <div
         className="link-login"
-        onClick={() => setActiveMenu("login")}>
+        onClick={() => dispatch(setActiveMenu("login"))}>
         {"<"}go to login
       </div>
       <h1>Sign Up</h1>

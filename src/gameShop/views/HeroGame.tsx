@@ -4,24 +4,40 @@ import CardGame from "../components/CardGame";
 import { Chip, MenuItem, Select, SelectChangeEvent } from "@mui/material";
 import { useState } from "react";
 import Button from "../../components/Button";
-import { useAppDispatch } from '../../hooks/redux';
-import { startAddGame } from '../../store/gameShop/thunks';
+import { useAppDispatch, useAppSelector } from "../../hooks/redux";
+import { startAddGame } from "../../store/gameShop/thunks";
+import { handleModal } from '@/store/auth/authSlice';
 
 type HeroGameProps = {
   game: GameType;
 };
 
 const HeroGame = ({ game }: HeroGameProps) => {
+  // Auth Modal
+
   const [platform, setPlatform] = useState(game.platforms[0].name || "");
+  const { shoppingCart } = useAppSelector(state => state.gameShop);
+  const { status } = useAppSelector(state => state.auth);
   const dispatch = useAppDispatch();
 
   const handleChange = (event: SelectChangeEvent) => {
     setPlatform(event.target.value);
   };
 
-  const onAddGameShoppingCart = ()=>{
-    dispatch(startAddGame(game))
-  }
+  const onAddGameShoppingCart = () => {
+    if (status !== "authenticated") {
+      dispatch(handleModal('login'))
+      return;
+    }
+    // @ts-expect-error
+    const aux = shoppingCart.some(g => g._id === game._id);
+    if (!aux) {
+      dispatch(startAddGame(game));
+    } else {
+      console.log("Ya esta agg");
+      //TODO: open dropdown for to shopping cart
+    }
+  };
 
   return (
     <StyledHero background={game?.backgroundUrl}>
@@ -88,8 +104,13 @@ const HeroGame = ({ game }: HeroGameProps) => {
                   ))}
                 </Select>
               </section>
-              
-              <Button type="button" className="buy-botton" onClick={onAddGameShoppingCart}><span>Buy</span></Button>
+
+              <Button
+                type="button"
+                className="buy-botton"
+                onClick={onAddGameShoppingCart}>
+                <span>Buy</span>
+              </Button>
             </section>
           </div>
         </div>
@@ -160,8 +181,8 @@ const StyledHero = styled.article<StyledType>`
         }
         .game-options {
           padding-left: 1rem;
-          .buy-botton{
-            margin: .5rem 0;
+          .buy-botton {
+            margin: 0.5rem 0;
           }
         }
       }

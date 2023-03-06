@@ -7,6 +7,7 @@ import GameShopPage from "../pages/GameShopPage";
 import { GenderType } from "@/types/genderType";
 import { FeaturedType } from "@/types/featuredType";
 import useGender from '../../hooks/useGender';
+import AuthModal from "../components/Header/AuthModal";
 const GameShopRoutes = () => {
   
   const { gender, featured } = useGender();
@@ -33,6 +34,7 @@ const GameShopRoutes = () => {
           <Route path="/*" element={<Navigate to="/" />} />
         </Routes>
       </main>
+      <AuthModal/>
     </StyledGameShop>
   );
 };

@@ -5,6 +5,7 @@ import { MdFavoriteBorder, MdFavorite } from "react-icons/md";
 import { useAppDispatch, useAppSelector } from '../../hooks/redux';
 import { startAddFavorite, startRemoveFavorite } from "@/store/gameShop/thunks";
 import { useState, useEffect } from 'react';
+import { handleModal } from "@/store/auth/authSlice";
 
 
 type CardProps = {
@@ -18,9 +19,14 @@ const CardGame = ({ game, className = "" }: CardProps) => {
 
   const dispatch = useAppDispatch();
   const {favorites} = useAppSelector(state => state.gameShop)
+  const {status} = useAppSelector(state => state.auth)
 
   const onAddFavorite= (e: React.MouseEvent<HTMLDivElement, MouseEvent>)=>{
     e.preventDefault();
+    if (status !== "authenticated") {
+      dispatch(handleModal('login'))
+      return;
+    }
 
     if(!fav){
       //* set favorite
