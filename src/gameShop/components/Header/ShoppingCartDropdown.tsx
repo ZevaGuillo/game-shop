@@ -7,7 +7,7 @@ type ShoppingCartDropdownProps = {
   const ShoppingCartDropdown = ({ setIsOpen }: ShoppingCartDropdownProps) => {
     return (
       <DropdownLayout setIsOpen={setIsOpen}>
-        <h1>hola</h1>
+        <h1>Shopping cart</h1>
       </DropdownLayout>
     );
   };

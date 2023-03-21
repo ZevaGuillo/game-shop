@@ -23,7 +23,7 @@ const GamePage = () => {
         navigate("/catalog");
       }
     })();
-  }, []);
+  }, [params]);
 
   if (loading) return <h1>Loading...</h1>;
 
