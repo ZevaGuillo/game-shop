@@ -50,7 +50,9 @@ const StyledDropdown = styled.div`
   border-radius: var(--border-radius);
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
   padding: 1rem;
-  overflow: hidden;
+  overflow-y: hidden;
+  max-height: 25rem;
+  overflow: auto;
   transition: height var(--speed) ease;
 
   .menu {

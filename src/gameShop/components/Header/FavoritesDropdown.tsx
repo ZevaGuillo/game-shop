@@ -58,8 +58,6 @@ const StyledFavorites = styled.div`
     display: flex;
     flex-direction: column;
     gap: 1rem;
-    max-height: 25rem;
-    overflow: auto;
     .game {
       display: flex;
       align-items: center;

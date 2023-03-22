@@ -3,7 +3,7 @@ import { Badge } from "@mui/material";
 import { useState } from 'react';
 import styled from "styled-components";
 import { FiShoppingCart } from "react-icons/fi";
-import ShoppingCartDropdown from "./ShoppingCartDropdown";
+import ShoppingCartDropdown from "./ShoppingCardDropdown";
 
 const ShoppingCartMenu = () => {
   const [isOpen, setIsOpen] = useState(false);

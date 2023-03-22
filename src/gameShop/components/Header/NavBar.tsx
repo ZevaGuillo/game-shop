@@ -10,7 +10,7 @@ import { useAppSelector } from "@/hooks/redux";
 import Button from "@/components/Button";
 import SignupModal from "./SignupModal";
 import FavoriteMenu from './FavoriteMenu';
-import ShoppingCartMenu from "./ShoppingCartMenu";
+import ShoppingCartMenu from "./ShoppingCardMenu";
 
 type NavBarProps = {
   toggleDrawer: () => void;

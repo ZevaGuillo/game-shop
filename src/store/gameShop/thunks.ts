@@ -75,9 +75,9 @@ export const startRemoveGame = (game: GameType): ThunkAction<void, RootState, un
     return async (dispatch, getState) => {
 
         const { uid } = getState().auth;
-        const {favorites} = getState().gameShop;
+        const {shoppingCart} = getState().gameShop;
         // console.log(game);
-        const currentGame = favorites.find(g => g.name === game.name)
+        const currentGame = shoppingCart.find(g => g.name === game.name)
         
         const docref = doc(FirebaseDB, `${uid}/gameshop/shoppingCart/${currentGame?.id}`)
         
