@@ -1,42 +1,90 @@
 import Image from "@/components/Image";
 import { GameType } from "@/types/gameType";
 import styled from "styled-components";
+import { MdFavoriteBorder, MdFavorite } from "react-icons/md";
+import { useAppDispatch, useAppSelector } from '../../hooks/redux';
+import { startAddFavorite, startRemoveFavorite } from "@/store/gameShop/thunks";
+import { useState, useEffect } from 'react';
+import { handleModal } from "@/store/auth/authSlice";
+
 
 type CardProps = {
   game: GameType;
+  className?: string;
 };
 
-const CardGame = ({ game }: CardProps) => {
+const CardGame = ({ game, className = "" }: CardProps) => {
+  
+  const [fav, setFav] = useState(false);
+
+  const dispatch = useAppDispatch();
+  const {favorites} = useAppSelector(state => state.gameShop)
+  const {status} = useAppSelector(state => state.auth)
+
+  const onAddFavorite= (e: React.MouseEvent<HTMLDivElement, MouseEvent>)=>{
+    e.preventDefault();
+    if (status !== "authenticated") {
+      dispatch(handleModal('login'))
+      return;
+    }
+
+    if(!fav){
+      //* set favorite
+      setFav(true);
+      dispatch(startAddFavorite(game));
+    }else{
+      setFav(false);
+      dispatch(startRemoveFavorite(game));
+    }
+
+  }
+
+  useEffect(()=>{
+    // @ts-expect-error
+    const aux = favorites.some(g => g._id === game._id) 
+    setFav(aux);
+  })
+
   return (
-    <StyledCard className="glass">
+    <StyledCard className={`glass ${className}`}>
       <div className="image">
         <img
           className="blur"
-          src={game.backgroundUrl}
+          src={game.coverUrl}
           alt={game.name}
-          width={190}
-          height={208}
+          width={100}
+          height={200}
         />
-        <Image url={game.backgroundUrl} className="cover" alt={game.name} />
+        <Image
+          url={game.coverUrl}
+          className="cover"
+          alt={game.name}
+        />
       </div>
       <section className="content">
-        <p>{game.name}</p>
+        <p className="title-game">{game.name}</p>
       </section>
+      <div className="price">${game.price}</div>
+      <div className={`favorite ${fav?'fav':''}`} onClick={onAddFavorite}><MdFavorite/></div>
+      
     </StyledCard>
   );
 };
 
 const StyledCard = styled.div`
   margin: 0 auto;
-  width: 12rem;
-  height: 17rem;
+  width: 100%;
+  height: 100%;
   border-radius: 8px;
   overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction:column;
 
   .image {
     position: relative;
     width: 100%;
-    height: 13rem;
+    height: 75%;
 
     .blur {
       position: absolute;
@@ -58,9 +106,54 @@ const StyledCard = styled.div`
   }
 
   .content {
-    padding: 0rem 1rem;
+    flex: 1;
+    padding: 0.2rem 1rem;
+    width: 100%;
     display: flex;
     justify-content: center;
+    align-items: center;
+    overflow: hidden;
+  }
+  .title-game {
+    font-size: 1em;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    place-content: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .price {
+    position: absolute;
+    top: 0;
+    padding: 0.2rem;
+    min-width: 15%;
+    aspect-ratio: 1/1;
+    background-color: #1e1e1ecc;
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
+    border-radius: 0 0 8px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: ${props => props.theme.colors.white};
+  }
+
+  .favorite{
+    position: absolute;
+    top: .2rem;
+    right: .2rem;
+    font-size: 1.5rem;
+  }
+  .favorite.fav{
+    color: red;
+  }
+
+  @media (min-width: 900px) {
+    .content {
+      padding: 1rem;
+    }
   }
 `;
 

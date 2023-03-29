@@ -1,10 +1,18 @@
 export interface GameType{
+    id:string,
     name: string,
     backgroundUrl: string,
     coverUrl: string,
     slug?: string,
     featured?: boolean,
-    gender?: string[]
+    genders?: {
+        name: string
+    }[],
+    platforms: {
+        name: string
+    }[],
+    price?:number,
+    description?: string
 }
 
 export type IGamesList = {

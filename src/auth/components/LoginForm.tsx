@@ -11,14 +11,10 @@ import { useForm } from "../../hooks/useForm";
 import { useAppSelector } from "../../hooks/redux";
 import { useMemo } from "react";
 import { Alert, Snackbar } from "@mui/material";
+import { setActiveMenu } from "@/store/auth/authSlice";
 
-type LoginFormProps = {
-  setActiveMenu: React.Dispatch<React.SetStateAction<string>>;
-};
-
-const LoginForm = ({ setActiveMenu }: LoginFormProps) => {
+const LoginForm = () => {
   const { status, errorMessage } = useAppSelector(state => state.auth);
-
   const dispatch = useAppDispatch();
 
   const { email, password, onInputChange } = useForm({
@@ -43,7 +39,7 @@ const LoginForm = ({ setActiveMenu }: LoginFormProps) => {
         <h1 className="title">Sign in</h1>
         <div
           className="link-register"
-          onClick={() => setActiveMenu("register")}>
+          onClick={() => dispatch(setActiveMenu("register"))}>
           Create an account {">"}
         </div>
       </header>

@@ -1,13 +1,14 @@
 import { useNavigate, useParams } from "react-router-dom";
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 import { GameType } from "@/types/gameType";
 import { getGamesBySlug } from "@/lib/queries/game";
+import HeroGame from "../views/HeroGame";
 
 const GamePage = () => {
   const params = useParams();
   const navigate = useNavigate();
-  const [game, setGame] = useState<GameType>()
-  const [loading, setLoading] = useState(false)
+  const [game, setGame] = useState<GameType>();
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     setLoading(true);
@@ -16,19 +17,26 @@ const GamePage = () => {
         const data = await getGamesBySlug(params.id);
         setGame(data);
         setLoading(false);
+        console.log(data);
       } catch (error) {
         console.log(error);
-        navigate('/catalog')
+        navigate("/catalog");
       }
     })();
-    
-  }, []);
+  }, [params]);
 
-  if(loading) return <h1>Loading...</h1>
+  if (loading) return <h1>Loading...</h1>;
 
   return (
-    <div>{game?.name}</div>
-  )
-}
+    <div>
+      {game && (
+        <>
+          <HeroGame game={game} />
+          
+        </>
+      )}
+    </div>
+  );
+};
 
-export default GamePage
+export default GamePage;

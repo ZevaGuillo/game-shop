@@ -22,6 +22,7 @@ const Usermenu = () => {
           sx={{ width: 37, height: 37, bgcolor: '#7D52D9'}}
           alt={displayName || ""}
           src={photoURL || ""}
+          imgProps={{ referrerPolicy: "no-referrer" }} 
         />
       </IconButton>
 

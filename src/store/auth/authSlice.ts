@@ -2,6 +2,8 @@ import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
     status: 'checking', // checking, not-authenticated, 'authenticated'
+    isModalOpen: false,
+    activeMenu: 'login',
     uid: null,
     email: null,
     displayName: null,
@@ -13,6 +15,13 @@ const authSlice = createSlice({
   name: 'auth',
   initialState,
   reducers: {
+    handleModal: (state, {payload})=>{
+      state.isModalOpen = !state.isModalOpen
+      state.activeMenu = payload
+    },
+    setActiveMenu: (state, {payload})=>{
+      state.activeMenu = payload
+    },
     login: (state, {payload}) => {
       state.status= 'authenticated';
       state.uid= payload.uid;
@@ -20,6 +29,7 @@ const authSlice = createSlice({
       state.displayName= payload.displayName;
       state.photoURL= payload.photoURL;
       state.errorMessage= null;
+      state.isModalOpen = false
     },
     logout: (state, {payload}) => {
       state.status= 'not-authenticated';
@@ -35,6 +45,6 @@ const authSlice = createSlice({
   }
 });
 
-export const {login, logout, checkingCredentials} = authSlice.actions
+export const {handleModal, setActiveMenu, login, logout, checkingCredentials} = authSlice.actions
 
 export default authSlice.reducer
