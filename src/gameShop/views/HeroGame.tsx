@@ -145,6 +145,7 @@ const StyledHero = styled.article<StyledType>`
   .content-game {
     padding-top: 4rem;
     padding-bottom: 2rem;
+    height: 100vh;
     width: 100%;
     background-color: ${props => props.theme.colors.bgColorOpacity};
     backdrop-filter: blur(30px);
