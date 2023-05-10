@@ -6,14 +6,11 @@ const Header = () => {
 
   const [isOpen, setIsOpen] = useState(false);
 
-  const toggleDrawer = ()=>{
-    setIsOpen(!isOpen);
-  }
 
   return (
     <header>
-      { isOpen && <Drawer/>} 
-      <NavBar toggleDrawer={toggleDrawer}/>
+      { isOpen && <Drawer open={isOpen} toggleDrawer={setIsOpen}/>} 
+      <NavBar toggleDrawer={setIsOpen}/>
     </header>
   );
 };
