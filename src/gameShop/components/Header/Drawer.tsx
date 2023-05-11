@@ -1,5 +1,4 @@
-import { SwipeableDrawer, SwipeableDrawerProps } from "@mui/material";
-import SignupModal from "./SignupModal";
+import { SwipeableDrawer } from "@mui/material";
 import { Link } from "react-router-dom";
 import LogoSVG from "@/components/LogoSVG";
 import styled from "styled-components";
@@ -11,6 +10,7 @@ type DrawerProps = {
 };
 
 const Drawer = ({ open, toggleDrawer }: DrawerProps) => {
+  
   return (
     <SwipeableDrawer
       sx={{ zIndex: "10000" }}
@@ -39,6 +39,7 @@ width: 70vw;
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  background: ${props => props.theme.colors.bgColor};
 
   .logo-header{
     display: flex;

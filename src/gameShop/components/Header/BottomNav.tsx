@@ -1,6 +1,7 @@
 import { useAppSelector } from "@/hooks/redux";
+import { darkTheme, theme } from "@/theme/Theme";
 import {
-    Avatar,
+  Avatar,
   Badge,
   BottomNavigation,
   BottomNavigationAction,
@@ -14,6 +15,8 @@ const BottomNav = () => {
 
   const { photoURL, displayName } = useAppSelector(state => state.auth);
 
+  const gameShop = useAppSelector(state => state.gameShop);
+
   return (
     <Box
       sx={{
@@ -25,6 +28,16 @@ const BottomNav = () => {
       }}>
       <BottomNavigation
         showLabels
+        sx={{
+          background: gameShop.darkMode
+            ? darkTheme.colors.bgColor
+            : theme.colors.bgColor,
+          borderTop: "1px solid",
+          paddingTop:'2px',
+          borderColor: gameShop.darkMode
+            ? darkTheme.colors.authPattern2
+            : theme.colors.authPattern2,
+        }}
         // value={value}
         // onChange={(event, newValue) => {
         //   setValue(newValue);
@@ -65,12 +78,14 @@ const BottomNav = () => {
         />
         <BottomNavigationAction
           label="Shopping Cart"
-          icon={<Badge
-            badgeContent={shoppingCart.length}
-            // onClick={() => setIsOpen(!isOpen)}
-            color="success">
-            <FiShoppingCart className="icon" />
-          </Badge>}
+          icon={
+            <Badge
+              badgeContent={shoppingCart.length}
+              // onClick={() => setIsOpen(!isOpen)}
+              color="success">
+              <FiShoppingCart className="icon" />
+            </Badge>
+          }
         />
       </BottomNavigation>
     </Box>
