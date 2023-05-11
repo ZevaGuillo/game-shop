@@ -1,4 +1,4 @@
-import { useAppSelector } from "@/hooks/redux";
+import { useAppDispatch, useAppSelector } from "@/hooks/redux";
 import { darkTheme, theme } from "@/theme/Theme";
 import {
   Avatar,
@@ -17,22 +17,21 @@ import UserDropdown from "./UserDropdown";
 import styled from "styled-components";
 import FavoritesDropdown from "./FavoritesDropdown";
 import ShoppingCartDropdown from "./ShoppingCardDropdown";
+import { handleModal } from "@/store/auth/authSlice";
 
 const BottomNav = () => {
   const [value, setValue] = useState(0);
   const [open, setOpen] = useState(false);
 
+  
+  const { favorites, shoppingCart } = useAppSelector(state => state.gameShop);
+  const { photoURL, displayName, status } = useAppSelector(state => state.auth);
+  const gameShop = useAppSelector(state => state.gameShop);
+  const dispatch = useAppDispatch();
+
   const toggleDrawer = (newOpen: boolean) => () => {
     setOpen(newOpen);
   };
-
-  const { favorites, shoppingCart } = useAppSelector(state => state.gameShop);
-  const { photoURL, displayName } = useAppSelector(state => state.auth);
-  const gameShop = useAppSelector(state => state.gameShop);
-
-  // This is used only for the example
-  const container: (() => HTMLElement) | undefined =
-    typeof window !== "undefined" ? () => window.document.body : undefined;
 
   return (
     <>
@@ -57,6 +56,10 @@ const BottomNav = () => {
           }}
           value={value}
           onChange={(event, newValue) => {
+            if (status !== "authenticated") {
+              dispatch(handleModal('login'))
+              return;
+            }
             setValue(newValue);
             setOpen(true);
           }}>
