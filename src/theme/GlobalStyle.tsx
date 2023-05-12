@@ -139,5 +139,21 @@ export const GlobalStyle = createGlobalStyle`
       }
     }
 
+    .container-skeleton-slider{
+      padding:5rem 0.7rem;
+      .skeleton-slider{
+        width: 100%;
+      }
+      @media (min-width: 900px) {
+        padding:7.8rem 11%;
+      }
+    }
+
+    .container-loading{
+      min-height: 100vh;
+      min-width: 100vw;
+      display: grid;
+      place-content: center;
+    }
 
 `;

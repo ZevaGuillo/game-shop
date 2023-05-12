@@ -5,6 +5,7 @@ import { getGames } from "@/lib/queries/game";
 import { GameType } from "@/types/gameType";
 import styled from "styled-components";
 import CardGame from "../components/CardGame";
+import { CircularProgress } from "@mui/material";
 
 const GameList = () => {
   const [games, setGames] = useState<GameType[]>();
@@ -13,7 +14,6 @@ const GameList = () => {
 
   let { g: filter = "" } = queryString.parse(location.search);
   filter = (filter as string).split(",");
-  console.log(filter);
 
   useEffect(() => {
     setLoading(true);
@@ -27,6 +27,8 @@ const GameList = () => {
       }
     })();
   }, []);
+
+  if (loading) return <div className="container-loading"><CircularProgress /></div>;
 
   return (
     <StyledGameList>
