@@ -66,14 +66,12 @@ const BottomNav = () => {
           <BottomNavigationAction
             label={displayName}
             icon={
-              <IconButton sx={{ p: 0 }}>
                 <Avatar
                   sx={{ width: 25, height: 25, bgcolor: "#7D52D9" }}
                   alt={displayName || ""}
                   src={photoURL || ""}
                   imgProps={{ referrerPolicy: "no-referrer" }}
                 />
-              </IconButton>
             }
           />
           <BottomNavigationAction

@@ -17,7 +17,7 @@ const GameShopPage = ({ gender, featured }: GameShopPage) => {
         <Skeleton
           className="skeleton-slider"
           variant="rounded"
-          height={400}
+          height={'40vw'}
         />
       </div>
     );
