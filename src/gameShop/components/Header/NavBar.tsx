@@ -1,19 +1,17 @@
 import LogoSVG from "@/components/LogoSVG";
-import { FiSearch, FiShoppingCart, FiUser, FiHeart } from "react-icons/fi";
 import { GiHamburgerMenu } from "react-icons/gi";
 import styled from "styled-components";
 import Search from "./Search";
-import SearchInput from "./Search";
 import Usermenu from "./Usermenu";
 import { Link } from "react-router-dom";
 import { useAppSelector } from "@/hooks/redux";
-import Button from "@/components/Button";
 import SignupModal from "./SignupModal";
-import FavoriteMenu from './FavoriteMenu';
+import FavoriteMenu from "./FavoriteMenu";
 import ShoppingCartMenu from "./ShoppingCardMenu";
+import BottomNav from "./BottomNav";
 
 type NavBarProps = {
-  toggleDrawer: () => void;
+  toggleDrawer: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 const NavBar = ({ toggleDrawer }: NavBarProps) => {
@@ -22,7 +20,7 @@ const NavBar = ({ toggleDrawer }: NavBarProps) => {
   return (
     <StyledNavBar className="container">
       <div
-        onClick={toggleDrawer}
+        onClick={()=>toggleDrawer(true)}
         className="drawer">
         <GiHamburgerMenu className="icon" />
       </div>
@@ -42,11 +40,11 @@ const NavBar = ({ toggleDrawer }: NavBarProps) => {
 
         {status === "authenticated" ? (
           <>
-            <FavoriteMenu/>
+            <FavoriteMenu />
             {/* <FiHeart className="icon favorite" /> */}
 
-            <ShoppingCartMenu/>
-            
+            <ShoppingCartMenu />
+
             <Usermenu />
           </>
         ) : status === "checking" ? (
@@ -56,6 +54,9 @@ const NavBar = ({ toggleDrawer }: NavBarProps) => {
         )}
         {/* <FiUser className="icon" /> */}
       </div>
+
+      <BottomNav/>
+
     </StyledNavBar>
   );
 };
@@ -100,7 +101,8 @@ const StyledNavBar = styled.nav.attrs(props => ({
   }
 
   .options {
-    display: flex;
+    display: none;
+    /* display: flex; */
     align-items: center;
     gap: 0.5rem;
     .favorite {
@@ -113,7 +115,7 @@ const StyledNavBar = styled.nav.attrs(props => ({
     max-height: 5rem;
     padding-top: 1rem;
     padding-bottom: 1rem;
-    background-color: ${(props) => props.theme.colors.bgColorOpacity};
+    background-color: ${props => props.theme.colors.bgColorOpacity};
     backdrop-filter: blur(10px);
     .logo-header {
       flex: none;
@@ -128,6 +130,7 @@ const StyledNavBar = styled.nav.attrs(props => ({
       display: none;
     }
     .options {
+      display: flex;
       gap: 2rem;
       .favorite {
         display: inline-block;

@@ -9,9 +9,10 @@ import DropdownLayout from "../DropdownLayout";
 
 type UserDropdownProps = {
   setIsOpen: () => void;
+  className?: string
 };
 
-const UserDropdown = ({ setIsOpen }: UserDropdownProps) => {
+const UserDropdown = ({ setIsOpen, className }: UserDropdownProps) => {
   const { displayName, photoURL } = useAppSelector(state => state.auth);
 
   const dispatch = useAppDispatch();
@@ -21,7 +22,8 @@ const UserDropdown = ({ setIsOpen }: UserDropdownProps) => {
   };
 
   return (
-    <DropdownLayout setIsOpen={setIsOpen}>
+    
+    <DropdownLayout setIsOpen={setIsOpen} className="bottomnav">
         <div className="option">
           <div className="name">
             <Avatar
@@ -44,5 +46,12 @@ const UserDropdown = ({ setIsOpen }: UserDropdownProps) => {
     </DropdownLayout>
   );
 };
+
+const StyledDropdown = styled.div`
+  .dropdown{
+
+  }
+
+`
 
 export default UserDropdown;

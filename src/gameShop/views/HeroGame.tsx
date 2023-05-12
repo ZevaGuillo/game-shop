@@ -2,11 +2,13 @@ import { GameType } from "@/types/gameType";
 import styled from "styled-components";
 import CardGame from "../components/CardGame";
 import { Chip, MenuItem, Select, SelectChangeEvent } from "@mui/material";
-import { useState } from "react";
+import { useState, useEffect } from 'react';
 import Button from "../../components/Button";
 import { useAppDispatch, useAppSelector } from "../../hooks/redux";
 import { startAddGame } from "../../store/gameShop/thunks";
-import { handleModal } from '@/store/auth/authSlice';
+import { handleModal } from "@/store/auth/authSlice";
+import { darkTheme, theme } from "@/theme/Theme";
+import { StyleTheme } from "@/theme/Theme";
 
 type HeroGameProps = {
   game: GameType;
@@ -16,8 +18,10 @@ const HeroGame = ({ game }: HeroGameProps) => {
   // Auth Modal
 
   const [platform, setPlatform] = useState(game.platforms[0].name || "");
-  const { shoppingCart } = useAppSelector(state => state.gameShop);
+  const { shoppingCart, darkMode } = useAppSelector(state => state.gameShop);
   const { status } = useAppSelector(state => state.auth);
+  const [localtheme, setLocaltheme] = useState<StyleTheme>(theme);
+  
   const dispatch = useAppDispatch();
 
   const handleChange = (event: SelectChangeEvent) => {
@@ -26,7 +30,7 @@ const HeroGame = ({ game }: HeroGameProps) => {
 
   const onAddGameShoppingCart = () => {
     if (status !== "authenticated") {
-      dispatch(handleModal('login'))
+      dispatch(handleModal("login"));
       return;
     }
     // @ts-expect-error
@@ -38,6 +42,14 @@ const HeroGame = ({ game }: HeroGameProps) => {
       //TODO: open dropdown for to shopping cart
     }
   };
+
+  useEffect(()=>{
+    if(darkMode){
+      setLocaltheme(darkTheme)
+    }else{
+      setLocaltheme(theme)
+    }
+  },[darkMode])
 
   return (
     <StyledHero background={game?.backgroundUrl}>
@@ -69,28 +81,24 @@ const HeroGame = ({ game }: HeroGameProps) => {
               <section className="platforms">
                 <Select
                   sx={{
-                    color: "white",
-                    "mix-blend-mode": "difference",
-                    ".MuiOutlinedInput-notchedOutline": {
-                      borderColor: "rgba(228, 219, 233, 0.25)",
+                    color: localtheme.colors.negative,
 
-                      "mix-blend-mode": "difference",
-                    },
-                    "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
-                      borderColor: "rgba(228, 219, 233, 0.25)",
-
-                      "mix-blend-mode": "difference",
-                    },
-                    "&:hover .MuiOutlinedInput-notchedOutline": {
-                      borderColor: "rgba(228, 219, 233, 0.25)",
-
-                      "mix-blend-mode": "difference",
-                    },
-                    ".MuiSvgIcon-root ": {
-                      fill: "white !important",
-
-                      "mix-blend-mode": "difference",
-                    },
+                      ".MuiOutlinedInput-notchedOutline": {
+                        borderColor: localtheme.colors.btnHover,
+  
+                      },
+                      "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
+                        borderColor: localtheme.colors.btnHover,
+  
+                      },
+                      "&:hover .MuiOutlinedInput-notchedOutline": {
+                        borderColor: localtheme.colors.btnHover,
+  
+                      },
+                      ".MuiSvgIcon-root ": {
+                        fill: `${localtheme.colors.btnHover} !important`,
+  
+                      },
                   }}
                   value={platform}
                   label={platform}
@@ -145,6 +153,7 @@ const StyledHero = styled.article<StyledType>`
   .content-game {
     padding-top: 4rem;
     padding-bottom: 2rem;
+    height: 100vh;
     width: 100%;
     background-color: ${props => props.theme.colors.bgColorOpacity};
     backdrop-filter: blur(30px);

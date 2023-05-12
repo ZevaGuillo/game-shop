@@ -10,9 +10,11 @@ import { startRemoveFavorite } from "@/store/gameShop/thunks";
 import { GameType } from "@/types/gameType";
 type FavoritesDropdownProps = {
   setIsOpen: () => void;
+  
+  className?: string
 };
 
-const FavoritesDropdown = ({ setIsOpen }: FavoritesDropdownProps) => {
+const FavoritesDropdown = ({ setIsOpen, className }: FavoritesDropdownProps) => {
   const { favorites } = useAppSelector(state => state.gameShop);
   const dispatch = useAppDispatch();
 
@@ -21,7 +23,7 @@ const FavoritesDropdown = ({ setIsOpen }: FavoritesDropdownProps) => {
   }
 
   return (
-    <DropdownLayout setIsOpen={setIsOpen}>
+    <DropdownLayout setIsOpen={setIsOpen} className={className}>
       <StyledFavorites>
         <div className="game-list">
           {favorites.map(game => (
@@ -62,6 +64,7 @@ const StyledFavorites = styled.div`
       display: flex;
       align-items: center;
       gap: 1rem;
+      justify-content: space-between;
       .content {
         display: flex;
         gap: 1rem;

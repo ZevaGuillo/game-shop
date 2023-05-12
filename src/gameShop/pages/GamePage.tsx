@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { GameType } from "@/types/gameType";
 import { getGamesBySlug } from "@/lib/queries/game";
 import HeroGame from "../views/HeroGame";
+import { CircularProgress } from "@mui/material";
 
 const GamePage = () => {
   const params = useParams();
@@ -17,7 +18,6 @@ const GamePage = () => {
         const data = await getGamesBySlug(params.id);
         setGame(data);
         setLoading(false);
-        console.log(data);
       } catch (error) {
         console.log(error);
         navigate("/catalog");
@@ -25,7 +25,7 @@ const GamePage = () => {
     })();
   }, [params]);
 
-  if (loading) return <h1>Loading...</h1>;
+  if (loading) return <div className="container-loading"><CircularProgress /></div>;
 
   return (
     <div>

@@ -7,34 +7,33 @@ import { MdDelete } from "react-icons/md";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import DropdownLayout from "../DropdownLayout";
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 import Button from "@/components/Button";
 
 type ShoppingCartDropdownProps = {
-    setIsOpen: () => void;
+  setIsOpen: () => void;
+  className?: string;
+};
+
+const ShoppingCartDropdown = ({ setIsOpen, className }: ShoppingCartDropdownProps) => {
+  const { shoppingCart } = useAppSelector(state => state.gameShop);
+  const dispatch = useAppDispatch();
+  const [total, setTotal] = useState(0);
+
+  const removeGame = (game: GameType) => {
+    dispatch(startRemoveGame(game));
   };
-  
-  const ShoppingCartDropdown = ({ setIsOpen }: ShoppingCartDropdownProps) => {
 
-    const { shoppingCart } = useAppSelector(state => state.gameShop);
-    const dispatch = useAppDispatch();
-    const [total, setTotal] = useState(0);
-    
+  useEffect(() => {
+    const gamesPrice = shoppingCart
+      .map(game => game.price)
+      .reduce((pre, current) => pre! + current!, total);
+    setTotal(gamesPrice || 0);
+  }, [shoppingCart]);
 
-    const removeGame = (game: GameType) => {
-      dispatch(startRemoveGame(game));
-    }
-
-    useEffect(() => {
-      const gamesPrice = shoppingCart.map(game => game.price)
-                                      .reduce((pre, current)=> pre! + current!, total )
-      setTotal(gamesPrice || 0)
-    }, [shoppingCart]);
-    
-
-    return (
-      <DropdownLayout setIsOpen={setIsOpen}>
-       <StyledFavorites>
+  return (
+    <DropdownLayout setIsOpen={setIsOpen} className={className}>
+      <StyledFavorites>
         <div className="game-list">
           {shoppingCart.map(game => (
             <div
@@ -55,15 +54,17 @@ type ShoppingCartDropdownProps = {
               <IconButton
                 aria-label="delete"
                 size="medium"
-                onClick={()=>removeGame(game)}>
+                onClick={() => removeGame(game)}>
                 <MdDelete className="delete" />
               </IconButton>
             </div>
           ))}
           <div className="payment">
-              <h4>Total:</h4>
-              <p>${total}</p>
-              <Button><span>Pay</span></Button>
+            <h4>Total:</h4>
+            <p>${total}</p>
+            <Button>
+              <span>Pay</span>
+            </Button>
           </div>
         </div>
       </StyledFavorites>
@@ -80,6 +81,7 @@ const StyledFavorites = styled.div`
     .game {
       display: flex;
       align-items: center;
+      justify-content: space-between;
       gap: 1rem;
       .content {
         display: flex;
@@ -104,14 +106,14 @@ const StyledFavorites = styled.div`
         fill: ${props => props.theme.colors.text};
       }
     }
-    .payment{
+    .payment {
       display: grid;
       grid-template-columns: 1fr 1fr;
       align-items: center;
-      p{
+      p {
         text-align: end;
       }
-      button{
+      button {
         grid-column: 2;
       }
     }

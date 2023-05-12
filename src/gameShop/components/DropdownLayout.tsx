@@ -7,9 +7,10 @@ import { useOnClickOutside } from "@/hooks/useOnClickOutside";
 type DropdownLayoutProps = {
     children: JSX.Element | JSX.Element[] 
   setIsOpen: () => void;
+  className?: string
 };
 
-const DropdownLayout = ({ children, setIsOpen }: DropdownLayoutProps) => {
+const DropdownLayout = ({ children, setIsOpen,className }: DropdownLayoutProps) => {
 
   const dropdownRef = useRef<HTMLInputElement>(null);
 
@@ -23,7 +24,7 @@ const DropdownLayout = ({ children, setIsOpen }: DropdownLayoutProps) => {
 
   return (
     <StyledDropdown
-      className="dropdown"
+      className={`dropdown ${className}`}
       ref={dropdownRef}>
       <section className="menu">
         {children}
