@@ -64,6 +64,7 @@ const StyledFavorites = styled.div`
       display: flex;
       align-items: center;
       gap: 1rem;
+      justify-content: space-between;
       .content {
         display: flex;
         gap: 1rem;
